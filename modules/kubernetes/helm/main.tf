@@ -9,12 +9,12 @@ module "cert-manager" {
 
   depends_on = [module.nullplatform]
 
-  values_yaml = var.values_yaml
+  values_yaml = var.values_yaml_cert_manager
   domain_name = var.domain_name
 }
 
 module "nullplatform" {
   source = "./nullplatform"
 
-  values_yaml = var.values_yaml
+  values_yaml = var.values_yaml_nullplatform
 }

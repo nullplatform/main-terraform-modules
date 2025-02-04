@@ -3,24 +3,14 @@ variable "domain_name" {
   type        = string
 }
 
-variable "google_project_id" {
-  description = "The gcp project id"
-  type        = string
-}
-
-variable "google_dns_service_account_key" {
-  description = "Base64 gcp service account key for cert-manager"
-  type        = string
-}
-
-variable "google_registry_service_account_key_base64" {
-  description = "Base64 gcp service account key for imagepullsecrets"
-  type        = string
-}
-
-variable "values_yaml" {
+variable "values_yaml_nullplatform" {
   type        = string
   description = "values.yaml for Nullplatform helm chart"
+}
+
+variable "values_yaml_cert_manager" {
+  type        = string
+  description = "values.yaml for cert_manager helm chart"
 }
 
 variable "registry" {
