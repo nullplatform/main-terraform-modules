@@ -1,0 +1,8 @@
+hostedZoneName: "${domain_name}"
+gcp:
+  enabled: true
+  projectId: ${project_id}
+  serviceAccountKey: |
+    ${indent(4, service_account_key)}
+azure:
+  enabled: false

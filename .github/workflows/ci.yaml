@@ -33,11 +33,17 @@ jobs:
           TF_DIRS=$(git diff --name-only origin/main HEAD | xargs -n1 dirname | sort -u)
           for DIR in $TF_DIRS; do
             echo "Validating Terraform in directory: $DIR"
+            (cd $DIR; terraform fmt -check)
+            if [ $? -ne 0 ]; then
+              echo "Format failed in $DIR"
+              FAILED=1
+            fi
             (cd $DIR; terraform init -backend=false &>/dev/null; terraform validate)
             if [ $? -ne 0 ]; then
               echo "Validation failed in $DIR"
               FAILED=1
             fi
+            
           done
 
           if [ $FAILED -ne 0 ]; then
