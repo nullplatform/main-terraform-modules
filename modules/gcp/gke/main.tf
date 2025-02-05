@@ -8,6 +8,7 @@ resource "google_container_cluster" "gke" {
   initial_node_count = var.initial_node_count
 
   node_config {
+    disk_size_gb    = var.disk_size_gb
     machine_type    = var.machine_type
     service_account = google_service_account.gke_service_account.email
     oauth_scopes    = ["https://www.googleapis.com/auth/cloud-platform"]
