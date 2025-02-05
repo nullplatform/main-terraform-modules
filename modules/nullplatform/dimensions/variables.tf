@@ -7,18 +7,8 @@ variable "nrn" {
   description = "The null platform nrn"
 }
 
-variable "dimension_value" {
-  type        = string
-  description = "The dimension value"
-  default     = null
-}
-
-variable "dimension_id" {
-  type        = string
-  description = "if provided is the dimension id"
-}
-
-variable "dimension_value_id" {
-  type        = string
-  description = "if provided will return the value id"
+variable "environments" {
+  type        = list(string)
+  description = "The list of environments"
+  default     = ["development", "staging", "production"]
 }
