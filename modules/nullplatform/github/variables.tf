@@ -11,12 +11,12 @@ variable "nrn" {
 # Variables from other Modules
 ################################################################################
 
-variable "github_organization" {
+variable "organization" {
   type        = string
   description = "The github organization to associate to nullplatform."
 }
 
-variable "github_organization_installation_id" {
+variable "organization_installation_id" {
   type        = string
   description = "The github installation id after installing the organization to Nullplatform github application."
 }
