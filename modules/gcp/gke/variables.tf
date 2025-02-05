@@ -47,3 +47,9 @@ variable "initial_node_count" {
   type    = number
   default = 3
 }
+
+variable "deletion_protection" {
+  type        = bool
+  default     = false
+  description = "value for the GKE cluster deletion protection"
+}

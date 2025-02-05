@@ -2,6 +2,8 @@ resource "google_container_cluster" "gke" {
   name     = "${var.cluster_name}-${var.environment}"
   location = var.region
 
+  deletion_protection = var.deletion_protection
+
   network    = var.network_id
   subnetwork = var.subnet_id
 
