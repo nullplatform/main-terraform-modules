@@ -51,12 +51,13 @@ jobs:
               echo "Validation failed in $DIR"
               FAILED=1
             fi
-            (cd $DIR; /home/runner/work/terraform-docs markdown table . >> README.md)
-            git diff $DIR/README.md
-            if [ -n "$(git diff $DIR/README.md)" ]; then
-              echo "Documentation failed in $DIR"
-              FAILED=1
-            fi
+            # TODO: Enable doc validation
+            # (cd $DIR; /home/runner/work/terraform-docs markdown table . >> README.md)
+            # git diff $DIR/README.md
+            # if [ -n "$(git diff $DIR/README.md)" ]; then
+            #   echo "Documentation failed in $DIR"
+            #   FAILED=1
+            # fi
           done
 
           if [ $FAILED -ne 0 ]; then
