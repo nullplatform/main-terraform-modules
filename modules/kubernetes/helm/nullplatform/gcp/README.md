@@ -10,7 +10,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_nullplatform"></a> [nullplatform](#module\_nullplatform) | ./.. |  |
+| <a name="module_nullplatform"></a> [nullplatform](#module\_nullplatform) | ./.. | n/a |
 
 ## Resources
 

@@ -10,7 +10,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_cert-manager"></a> [cert-manager](#module\_cert-manager) | ./.. |  |
+| <a name="module_cert-manager"></a> [cert-manager](#module\_cert-manager) | ./.. | n/a |
 
 ## Resources
 
