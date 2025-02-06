@@ -17,4 +17,3 @@ This repository contains an extensive list of modules used and shared by Nullpla
 - Create your module folder
 - Execute the following command into the module to generate the documentation
 - Push and create a PR
-
