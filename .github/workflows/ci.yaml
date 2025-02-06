@@ -25,6 +25,13 @@ jobs:
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.5.7  # Replace with your desired Terraform version
+      
+      - name: Get terraform-docs
+        run: |
+          curl -sSLo ./terraform-docs.tar.gz https://terraform-docs.io/dl/v0.19.0/terraform-docs-v0.19.0-$(uname)-amd64.tar.gz
+          tar -xzf terraform-docs.tar.gz
+          chmod +x terraform-docs
+          mv terraform-docs /terraform-docs
 
       - name: Validate Terraform modules
         run: |
@@ -43,7 +50,13 @@ jobs:
               echo "Validation failed in $DIR"
               FAILED=1
             fi
-            
+            (cd $DIR; terraform-docs markdown table . --hide header --hide providers --sort-by-required >> README.md)
+            if [ -n "$(git diff --name-only .)" ]; then
+              echo "Error: There are undocummented repositories changes in the repository."
+              exit 1
+            else
+              echo "No uncommitted changes found."
+            fi
           done
 
           if [ $FAILED -ne 0 ]; then
