@@ -4,8 +4,16 @@
     </a>
     <br>
     <br>
-    Nullplatform "Any Technology" Template
+    Nullplatform Terraform modules
     <br>
 </h2>
 
-Terraform modules for POCs
+# General
+
+This repository contains an extensive list of modules used and shared by Nullplatform to simplify the configuration of Nullplatform across your ecosystem.
+
+# Generating modules
+
+- Create your module folder
+- Execute the following command into the module to generate the documentation
+- Push and create a PR

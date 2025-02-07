@@ -1,5 +1,5 @@
 resource "google_storage_bucket" "bucket" {
-  name                        = "${var.name}-${terraform.workspace}"
+  name                        = var.name
   location                    = var.region
   force_destroy               = true
   storage_class               = var.storage_class
