@@ -6,7 +6,7 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_nullplatform"></a> [nullplatform](#provider\_nullplatform) | n/a |
+| <a name="provider_nullplatform"></a> [nullplatform](#provider\_nullplatform) | 0.0.50 |
 
 ## Modules
 
@@ -23,7 +23,7 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | GKE Cluster name | `string` | n/a | yes |
-| <a name="input_dimension"></a> [dimension](#input\_dimension) | The dimension to which the configuraion applies | `string` | n/a | yes |
+| <a name="input_environment"></a> [environment](#input\_environment) | The environment dimension value to which the configuraion applies | `string` | n/a | yes |
 | <a name="input_gateway_namespace"></a> [gateway\_namespace](#input\_gateway\_namespace) | Namespace where gateways will be created | `string` | `"gateways"` | no |
 | <a name="input_location"></a> [location](#input\_location) | GCP location where the cluster exists | `string` | n/a | yes |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | Namespace where apps will be created | `string` | `"nullplatform"` | no |
