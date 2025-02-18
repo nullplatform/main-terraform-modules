@@ -2,7 +2,7 @@ resource "nullplatform_provider_config" "gke" {
   nrn  = var.nrn
   type = "gke-configuration"
   dimensions = {
-    environment = var.dimension
+    environment = var.environment
   }
   attributes = jsonencode({
     "cluster" : {
