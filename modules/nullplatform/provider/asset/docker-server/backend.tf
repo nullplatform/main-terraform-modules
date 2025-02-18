@@ -3,8 +3,5 @@ terraform {
     nullplatform = {
       source = "nullplatform/nullplatform"
     }
-    azurerm = {
-      source = "hashicorp/azurerm"
-    }
   }
 }

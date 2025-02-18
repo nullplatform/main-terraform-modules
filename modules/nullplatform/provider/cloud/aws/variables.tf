@@ -12,11 +12,6 @@ variable "region" {
   type = string
 }
 
-variable "api_key" {
-  type        = string
-  description = "nullplatform API key"
-}
-
 variable "domain_name" {
   type = string
 }
