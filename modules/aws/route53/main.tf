@@ -2,7 +2,7 @@ resource "aws_route53_zone" "public_zone" {
   name     = var.domain_name
   provider = aws
   tags = {
-    name         = "${var.domain_name} - Public Zone"
+    name = "${var.domain_name} - Public Zone"
   }
 }
 
