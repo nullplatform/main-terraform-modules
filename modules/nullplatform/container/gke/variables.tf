@@ -3,9 +3,9 @@ variable "nrn" {
   description = "The null platform nrn"
 }
 
-variable "dimension" {
+variable "environment" {
   type        = string
-  description = "The dimension to which the configuraion applies"
+  description = "The environment dimension value to which the configuraion applies"
 }
 
 variable "cluster_name" {
