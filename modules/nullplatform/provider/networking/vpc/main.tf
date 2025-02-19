@@ -1,10 +1,8 @@
 resource "nullplatform_provider_config" "network" {
-  provider = nullplatform
-  nrn      = var.nrn
-  type     = "aws-networking-configuration"
-  dimensions = {
-    environment = var.environment
-  }
+  provider   = nullplatform
+  nrn        = var.nrn
+  type       = "aws-networking-configuration"
+  dimensions = local.dimensions
   attributes = jsonencode({
     "vpc" : {
       "id" : var.vpc_id,

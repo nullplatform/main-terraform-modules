@@ -1,10 +1,8 @@
 resource "nullplatform_provider_config" "ec2" {
-  provider = nullplatform
-  nrn      = var.nrn
-  type     = "ec2-configuration"
-  dimensions = {
-    environment = var.environment
-  }
+  provider   = nullplatform
+  nrn        = var.nrn
+  type       = "ec2-configuration"
+  dimensions = local.dimensions
   attributes = jsonencode({
     ami = {
       id = var.ami_id
