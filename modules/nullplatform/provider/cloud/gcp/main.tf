@@ -1,9 +1,7 @@
 resource "nullplatform_provider_config" "gcp" {
-  nrn  = var.nrn
-  type = "google-cloud-configuration"
-  dimensions = {
-    environment = var.environment
-  }
+  nrn        = var.nrn
+  type       = "google-cloud-configuration"
+  dimensions = var.dimensions
   attributes = jsonencode({
     "project" : {
       "id" : var.project_id

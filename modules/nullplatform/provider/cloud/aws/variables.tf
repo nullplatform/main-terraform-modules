@@ -8,6 +8,18 @@ variable "environment" {
   description = "The environment dimension value to which the configuraion applies"
 }
 
+variable "dimensions" {
+  type        = map(string)
+  description = "A map of dimension values to configure Nullplatform"
+  default     = {}
+}
+
+variable "include_environment" {
+  type        = bool
+  description = "use Environment as default dimension"
+  default     = true
+}
+
 variable "region" {
   type = string
 }

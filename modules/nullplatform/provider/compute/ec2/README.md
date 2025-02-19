@@ -23,7 +23,9 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_ami_id"></a> [ami\_id](#input\_ami\_id) | AMI Id used to launch to EC2 instances | `string` | `"ami-0a6dd292b2a2a778c"` | no |
+| <a name="input_dimensions"></a> [dimensions](#input\_dimensions) | A map of dimension values to configure Nullplatform | `map(string)` | `{}` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | The environment dimension value to which the configuraion applies | `string` | n/a | yes |
+| <a name="input_include_environment"></a> [include\_environment](#input\_include\_environment) | use Environment as default dimension | `bool` | `true` | no |
 | <a name="input_instance_profile"></a> [instance\_profile](#input\_instance\_profile) | The IAM Instance profile to attach to EC2 instances | `string` | n/a | yes |
 | <a name="input_nrn"></a> [nrn](#input\_nrn) | The null platform nrn | `string` | n/a | yes |
 | <a name="input_parameters_bucket"></a> [parameters\_bucket](#input\_parameters\_bucket) | The parameters bucket storage | `string` | n/a | yes |

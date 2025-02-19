@@ -22,7 +22,9 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_dimensions"></a> [dimensions](#input\_dimensions) | A map of dimension values to configure Nullplatform | `map(string)` | `{}` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | The environment dimension value to which the configuraion applies | `string` | n/a | yes |
+| <a name="input_include_environment"></a> [include\_environment](#input\_include\_environment) | use Environment as default dimension | `bool` | `true` | no |
 | <a name="input_nrn"></a> [nrn](#input\_nrn) | The null platform nrn | `string` | n/a | yes |
 | <a name="input_private_load_balancer_arn"></a> [private\_load\_balancer\_arn](#input\_private\_load\_balancer\_arn) | The private alb arn used for ec2 and lambda | `string` | n/a | yes |
 | <a name="input_private_load_balancer_listener_arn"></a> [private\_load\_balancer\_listener\_arn](#input\_private\_load\_balancer\_listener\_arn) | The private alb listener arn used for ec2 and lambda | `string` | n/a | yes |

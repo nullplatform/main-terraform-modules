@@ -1,10 +1,8 @@
 resource "nullplatform_provider_config" "aws" {
-  provider = nullplatform
-  nrn      = var.nrn
-  type     = "aws-configuration"
-  dimensions = {
-    environment = var.environment
-  }
+  provider   = nullplatform
+  nrn        = var.nrn
+  type       = "aws-configuration"
+  dimensions = local.dimensions
   attributes = jsonencode({
     iam = {
       scope_workflow_role = var.scope_manager_role
