@@ -1,5 +1,5 @@
 # Resource: Service Specification
-resource "nullplatform_service_specification" "service_spec" {
+resource "nullplatform_service_specification" "service_specification" {
   name          = var.name
   type          = var.type
   assignable_to = var.assignable_to
