@@ -17,7 +17,8 @@ No modules.
 | Name | Type |
 |------|------|
 | [nullplatform_action_specification.basic_actions](https://registry.terraform.io/providers/nullplatform/nullplatform/latest/docs/resources/action_specification) | resource |
-| [nullplatform_service_specification.service_spec](https://registry.terraform.io/providers/nullplatform/nullplatform/latest/docs/resources/service_specification) | resource |
+| [nullplatform_link_specification.link_specification](https://registry.terraform.io/providers/nullplatform/nullplatform/latest/docs/resources/link_specification) | resource |
+| [nullplatform_service_specification.service_specification](https://registry.terraform.io/providers/nullplatform/nullplatform/latest/docs/resources/service_specification) | resource |
 
 ## Inputs
 
@@ -27,11 +28,19 @@ No modules.
 | <a name="input_attributes"></a> [attributes](#input\_attributes) | service attributes json schema | `any` | n/a | yes |
 | <a name="input_basic_actions"></a> [basic\_actions](#input\_basic\_actions) | Action schemas definitions | <pre>object({<br/>    create = object({<br/>      name       = string<br/>      retryable  = bool<br/>      parameters = any<br/>      results    = any<br/>    })<br/>    update = object({<br/>      name       = string<br/>      retryable  = bool<br/>      parameters = any<br/>      results    = any<br/>    })<br/>    delete = object({<br/>      name       = string<br/>      retryable  = bool<br/>      parameters = any<br/>      results    = any<br/>    })<br/>  })</pre> | n/a | yes |
 | <a name="input_dimensions"></a> [dimensions](#input\_dimensions) | service dimensions | `map(any)` | n/a | yes |
+| <a name="input_link_assignable_to"></a> [link\_assignable\_to](#input\_link\_assignable\_to) | link assignable to. Options: any, dimension, scope | `string` | `"any"` | no |
+| <a name="input_link_attributes"></a> [link\_attributes](#input\_link\_attributes) | link attributes json schema | `any` | n/a | yes |
+| <a name="input_link_dimensions"></a> [link\_dimensions](#input\_link\_dimensions) | link dimensions | `map(any)` | n/a | yes |
+| <a name="input_link_name"></a> [link\_name](#input\_link\_name) | link name | `string` | n/a | yes |
+| <a name="input_link_unique"></a> [link\_unique](#input\_link\_unique) | link is unique | `bool` | `false` | no |
 | <a name="input_name"></a> [name](#input\_name) | service name | `string` | n/a | yes |
 | <a name="input_selectors"></a> [selectors](#input\_selectors) | Service selectors configuration | `map(string)` | n/a | yes |
 | <a name="input_type"></a> [type](#input\_type) | service type | `string` | `"dependency"` | no |
-| <a name="input_visible_to"></a> [visible\_to](#input\_visible\_to) | Visibility of the service specification | `list(string)` | <pre>[<br/>  "organization=1255165411:account=*"<br/>]</pre> | no |
+| <a name="input_visible_to"></a> [visible\_to](#input\_visible\_to) | Visibility of the service specification | `list(string)` | <pre>[<br/>  "organization=1:account=*"<br/>]</pre> | no |
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_link_specification_id"></a> [link\_specification\_id](#output\_link\_specification\_id) | value of the link specification id |
+| <a name="output_service_specification_id"></a> [service\_specification\_id](#output\_service\_specification\_id) | value of the service specification id |

@@ -61,3 +61,32 @@ variable "basic_actions" {
     })
   })
 }
+
+variable "link_assignable_to" {
+  description = "link assignable to. Options: any, dimension, scope"
+  type        = string
+  default     = "any"
+}
+
+
+variable "link_name" {
+  description = "link name"
+  type        = string
+}
+
+variable "link_dimensions" {
+  description = "link dimensions"
+  type        = map(any)
+}
+
+variable "link_attributes" {
+  description = "link attributes json schema"
+  type        = any
+}
+
+variable "link_unique" {
+  description = "link is unique"
+  type        = bool
+  default     = false
+}
+
