@@ -18,6 +18,8 @@ No modules.
 |------|------|
 | [nullplatform_action_specification.basic_actions](https://registry.terraform.io/providers/nullplatform/nullplatform/latest/docs/resources/action_specification) | resource |
 | [nullplatform_link_specification.link_specification](https://registry.terraform.io/providers/nullplatform/nullplatform/latest/docs/resources/link_specification) | resource |
+| [nullplatform_notification_channel.github](https://registry.terraform.io/providers/nullplatform/nullplatform/latest/docs/resources/notification_channel) | resource |
+| [nullplatform_notification_channel.webhook](https://registry.terraform.io/providers/nullplatform/nullplatform/latest/docs/resources/notification_channel) | resource |
 | [nullplatform_service_specification.service_specification](https://registry.terraform.io/providers/nullplatform/nullplatform/latest/docs/resources/service_specification) | resource |
 
 ## Inputs
@@ -34,6 +36,7 @@ No modules.
 | <a name="input_link_name"></a> [link\_name](#input\_link\_name) | link name | `string` | n/a | yes |
 | <a name="input_link_unique"></a> [link\_unique](#input\_link\_unique) | link is unique | `bool` | `false` | no |
 | <a name="input_name"></a> [name](#input\_name) | service name | `string` | n/a | yes |
+| <a name="input_notify_channels"></a> [notify\_channels](#input\_notify\_channels) | Notification channels configuration | <pre>object({<br/>    github = object({<br/>      enabled         = bool<br/>      account         = string<br/>      reference       = string<br/>      repository      = string<br/>      workflow_id     = string<br/>      installation_id = string<br/>    }),<br/>    webhook = object({<br/>      enabled = bool<br/>      url     = string<br/>      headers = map(string)<br/>    }),<br/>  })</pre> | n/a | yes |
 | <a name="input_selectors"></a> [selectors](#input\_selectors) | Service selectors configuration | `map(string)` | n/a | yes |
 | <a name="input_type"></a> [type](#input\_type) | service type | `string` | `"dependency"` | no |
 | <a name="input_visible_to"></a> [visible\_to](#input\_visible\_to) | Visibility of the service specification | `list(string)` | <pre>[<br/>  "organization=1:account=*"<br/>]</pre> | no |
