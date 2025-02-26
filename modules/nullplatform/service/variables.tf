@@ -90,3 +90,37 @@ variable "link_unique" {
   default     = false
 }
 
+variable "notify_channels" {
+  description = "Notification channels configuration"
+  type = object({
+    github = object({
+      enabled         = bool
+      account         = string
+      reference       = string
+      repository      = string
+      workflow_id     = string
+      installation_id = string
+    }),
+    webhook = object({
+      enabled = bool
+      url     = string
+      headers = map(string)
+    }),
+  })
+  default = {
+    github = {
+      enabled         = false
+      account         = ""
+      reference       = ""
+      repository      = ""
+      workflow_id     = ""
+      installation_id = ""
+    },
+    webhook = {
+      enabled = false
+      url     = ""
+      headers = {}
+    },
+  }
+}
+
