@@ -90,6 +90,10 @@ variable "link_unique" {
   default     = false
 }
 
+variable "filters" {
+  description = "Additional filters to add to the service notification channels"
+}
+
 variable "notify_channels" {
   description = "Notification channels configuration"
   type = object({

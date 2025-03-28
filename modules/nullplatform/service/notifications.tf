@@ -14,8 +14,6 @@ resource "nullplatform_notification_channel" "github" {
       installation_id = var.notify_channels.github.installation_id
     }
   }
-
-
 }
 
 resource "nullplatform_notification_channel" "webhook" {
