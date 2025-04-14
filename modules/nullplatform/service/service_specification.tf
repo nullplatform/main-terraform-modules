@@ -10,6 +10,8 @@ resource "nullplatform_service_specification" "service_specification" {
 
   attributes = jsonencode(var.attributes)
 
+  use_default_actions = var.use_default_actions
+
   selectors {
     category     = var.selectors.category
     imported     = var.selectors.imported

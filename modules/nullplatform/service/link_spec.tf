@@ -8,6 +8,8 @@ resource "nullplatform_link_specification" "link_specification" {
   dimensions = jsonencode(var.link_dimensions)
   attributes = jsonencode(var.link_attributes)
 
+  use_default_actions = var.use_default_actions
+
   selectors {
     category     = var.selectors.category
     imported     = var.selectors.imported

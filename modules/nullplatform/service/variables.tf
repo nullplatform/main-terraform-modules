@@ -128,3 +128,7 @@ variable "notify_channels" {
   }
 }
 
+variable "use_default_actions" {
+  type    = bool
+  default = true
+}
