@@ -40,26 +40,8 @@ variable "selectors" {
 
 variable "basic_actions" {
   description = "Action schemas definitions"
-  type = object({
-    create = object({
-      name       = string
-      retryable  = bool
-      parameters = any
-      results    = any
-    })
-    update = object({
-      name       = string
-      retryable  = bool
-      parameters = any
-      results    = any
-    })
-    delete = object({
-      name       = string
-      retryable  = bool
-      parameters = any
-      results    = any
-    })
-  })
+  default     = {}
+  type        = map(any)
 }
 
 variable "link_assignable_to" {
@@ -126,9 +108,4 @@ variable "notify_channels" {
       headers = {}
     },
   }
-}
-
-variable "use_default_actions" {
-  type    = bool
-  default = true
 }

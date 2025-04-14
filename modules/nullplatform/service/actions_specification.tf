@@ -1,5 +1,5 @@
 resource "nullplatform_action_specification" "basic_actions" {
-  for_each = var.use_default_actions ? {} : var.basic_actions
+  for_each = var.basic_actions
 
   name                     = each.value.name
   type                     = each.key
