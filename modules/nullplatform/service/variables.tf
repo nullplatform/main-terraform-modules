@@ -41,7 +41,6 @@ variable "selectors" {
 variable "basic_actions" {
   description = "Action schemas definitions"
   default     = {}
-  type        = map(any)
 }
 
 variable "link_assignable_to" {
