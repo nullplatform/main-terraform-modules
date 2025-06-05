@@ -1,24 +1,7 @@
 resource "aws_iam_role" "vault_kms_role" {
   name = "vault-kms-role-${var.cluster_name}"
 
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Action = "sts:AssumeRoleWithWebIdentity"
-        Effect = "Allow"
-        Principal = {
-          Federated = data.aws_iam_openid_connect_provider.eks.arn
-        }
-        Condition = {
-          StringEquals = {
-            "${replace(data.aws_eks_cluster.cluster.identity[0].oidc[0].issuer, "https://", "")}:sub" = "system:serviceaccount:${var.vault_namespace}:${var.vault_service_account}"
-            "${replace(data.aws_eks_cluster.cluster.identity[0].oidc[0].issuer, "https://", "")}:aud" = "sts.amazonaws.com"
-          }
-        }
-      }
-    ]
-  })
+  assume_role_policy = jsonencode(module.trusting_oidc.trusting)
 }
 
 

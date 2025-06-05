@@ -6,6 +6,10 @@ data "aws_eks_cluster" "cluster" {
   name = var.cluster_name
 }
 
-data "aws_iam_openid_connect_provider" "eks" {
-  url = data.aws_eks_cluster.cluster.identity[0].oidc[0].issuer
+module "trusting_oidc" {
+  source = "../../aws/data/iam/eks/trusting"
+
+  cluster_name         = var.cluster_name
+  namespace            = var.vault_namespace
+  service_account_name = var.vault_service_account
 }
