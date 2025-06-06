@@ -1,5 +1,5 @@
 module "nullplatform" {
-  source = "./.."
+  source = "../.."
 
   values_yaml = templatefile("${path.module}/template/values.yaml", {
     registry = var.registry,
