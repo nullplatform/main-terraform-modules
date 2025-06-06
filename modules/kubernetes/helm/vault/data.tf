@@ -7,7 +7,7 @@ data "aws_eks_cluster" "cluster" {
 }
 
 module "trusting_oidc" {
-  source = "../../aws/data/iam/eks/trusting"
+  source = "../../../aws/data/iam/eks/trusting"
 
   cluster_name         = var.cluster_name
   namespace            = var.vault_namespace
