@@ -1,32 +1,3 @@
-
-resource "aws_iam_policy" "nullplatform_metrics_eks_policy" {
-  provider    = aws
-  name        = "nullplatform-eks-cw-api-policy"
-  description = "Policy for managing CloudWatch metrics and logs from Kubernetes"
-  policy = jsonencode({
-    Version = "2012-10-17",
-    Statement = [
-      {
-        Effect = "Allow",
-        Action = [
-          "ec2:DescribeInstances",
-          "cloudwatch:GetMetricData",
-          "cloudwatch:ListMetrics",
-          "logs:Describe*",
-          "logs:Get*",
-          "logs:List*",
-          "logs:StartQuery",
-          "logs:StopQuery",
-          "logs:TestMetricFilter",
-          "logs:FilterLogEvents"
-        ],
-        Resource = "*"
-      }
-    ]
-  })
-}
-
-
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 19.0"
@@ -56,6 +27,7 @@ module "eks" {
     }
     aws-ebs-csi-driver = {
       most_recent = true
+      service_account_role_arn = module.ebs_csi_irsa.iam_role_arn
     }
   }
 
@@ -94,4 +66,6 @@ module "eks" {
     }
   ]
 }
+
+
 
