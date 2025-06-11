@@ -67,7 +67,7 @@ resource "helm_release" "vault" {
             }
 
             seal "awskms" {
-              region     = data.aws_region.current.name
+              region     = ${data.aws_region.current.name}
               kms_key_id = "${var.kms_key_id != "" ? var.kms_key_id : aws_kms_key.vault_unseal[0].key_id}"
             }
 
