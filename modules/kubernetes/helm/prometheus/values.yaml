@@ -1,6 +1,10 @@
 server:
   persistentVolume:
-    enabled: false
+    enabled: true
+    size: 20Gi
+    storageClass: "gp2"
+    accessModes:
+      - ReadWriteOnce
   emptyDir: {}
   service:
     type: ClusterIP
