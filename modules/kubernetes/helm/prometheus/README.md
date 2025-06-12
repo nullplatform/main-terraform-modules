@@ -29,8 +29,8 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_allowed_cidrs"></a> [allowed\_cidrs](#input\_allowed\_cidrs) | List of CIDR blocks allowed to access the Prometheus load balancer | `list(string)` | <pre>[<br/>  "0.0.0.0/0"<br/>]</pre> | no |
+| <a name="input_load_balancer_scheme"></a> [load\_balancer\_scheme](#input\_load\_balancer\_scheme) | Load balancer scheme - 'internet-facing' for public access or 'internal' for private access | `string` | `"internal"` | no |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | The namespace to deploy Prometheus into | `string` | `"prometheus"` | no |
-| <a name="input_public_subnet_ids"></a> [public\_subnet\_ids](#input\_public\_subnet\_ids) | List of public subnet IDs for the load balancer | `list(string)` | n/a | yes |
 
 ## Outputs
 

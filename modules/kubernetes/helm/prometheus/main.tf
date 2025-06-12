@@ -5,12 +5,11 @@ resource "helm_release" "prometheus" {
   namespace        = var.namespace
   create_namespace = true
 
-  set {
-    name  = "server.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-source-ranges"
-    value = join(",", var.allowed_cidrs)
-  }
-
   values = [
-    file("${path.module}/values.yaml")
+    templatefile("${path.module}/values.yaml.tmpl", {
+      namespace            = var.namespace
+      load_balancer_scheme = var.load_balancer_scheme
+      allowed_cidrs        = join(",", var.allowed_cidrs)
+    })
   ]
 }

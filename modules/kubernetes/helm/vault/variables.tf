@@ -37,3 +37,14 @@ variable "allowed_cidr_blocks" {
   type        = list(string)
   default     = ["0.0.0.0/0"]
 }
+
+variable "load_balancer_scheme" {
+  description = "Load balancer scheme - 'internet-facing' for public access or 'internal' for private access"
+  type        = string
+  default     = "internal"
+  validation {
+    condition     = contains(["internet-facing", "internal"], var.load_balancer_scheme)
+    error_message = "Load balancer scheme must be either 'internet-facing' or 'internal'."
+  }
+}
+

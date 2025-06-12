@@ -10,7 +10,12 @@ variable "allowed_cidrs" {
   default     = ["0.0.0.0/0"] # Default to allow all, but should be restricted in production
 }
 
-variable "public_subnet_ids" {
-  description = "List of public subnet IDs for the load balancer"
-  type        = list(string)
+variable "load_balancer_scheme" {
+  description = "Load balancer scheme - 'internet-facing' for public access or 'internal' for private access"
+  type        = string
+  default     = "internal"
+  validation {
+    condition     = contains(["internet-facing", "internal"], var.load_balancer_scheme)
+    error_message = "Load balancer scheme must be either 'internet-facing' or 'internal'."
+  }
 }

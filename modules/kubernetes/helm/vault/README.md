@@ -49,6 +49,7 @@
 | <a name="input_allowed_cidr_blocks"></a> [allowed\_cidr\_blocks](#input\_allowed\_cidr\_blocks) | List of CIDR blocks allowed to access the load balancer | `list(string)` | <pre>[<br/>  "0.0.0.0/0"<br/>]</pre> | no |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | Name of the Kubernetes cluster | `string` | n/a | yes |
 | <a name="input_kms_key_id"></a> [kms\_key\_id](#input\_kms\_key\_id) | AWS KMS Key ID for auto-unseal | `string` | `""` | no |
+| <a name="input_load_balancer_scheme"></a> [load\_balancer\_scheme](#input\_load\_balancer\_scheme) | Load balancer scheme - 'internet-facing' for public access or 'internal' for private access | `string` | `"internal"` | no |
 | <a name="input_public_subnet_ids"></a> [public\_subnet\_ids](#input\_public\_subnet\_ids) | List of public subnet IDs for the load balancer | `list(string)` | n/a | yes |
 | <a name="input_vault_namespace"></a> [vault\_namespace](#input\_vault\_namespace) | Kubernetes namespace for Vault | `string` | `"vault"` | no |
 | <a name="input_vault_service_account"></a> [vault\_service\_account](#input\_vault\_service\_account) | Vault service account name | `string` | `"vault"` | no |

@@ -73,14 +73,12 @@ resource "helm_release" "vault" {
           annotations = {
             "service.beta.kubernetes.io/aws-load-balancer-type"                              = "nlb"
             "service.beta.kubernetes.io/aws-load-balancer-subnets"                           = join(",", var.public_subnet_ids)
-            "service.beta.kubernetes.io/aws-load-balancer-scheme"                            = "internet-facing"
-            "service.beta.kubernetes.io/aws-load-balancer-internal"                          = "false"
-            "service.beta.kubernetes.io/aws-load-balancer-ssl-cert"                          = ""
+            "service.beta.kubernetes.io/aws-load-balancer-scheme"                            = var.load_balancer_scheme
+            "service.beta.kubernetes.io/aws-load-balancer-internal"                          = tostring(var.load_balancer_scheme == "internal")
             "service.beta.kubernetes.io/aws-load-balancer-ssl-ports"                         = "8200"
             "service.beta.kubernetes.io/aws-load-balancer-ssl-redirect"                      = "true"
             "service.beta.kubernetes.io/aws-load-balancer-ssl-negotiation-policy"            = "ELBSecurityPolicy-TLS-1-2-2017-01"
             "service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled" = "true"
-            "service.beta.kubernetes.io/aws-load-balancer-attributes"                        = "idle_timeout.timeout_seconds=60"
             "service.beta.kubernetes.io/aws-load-balancer-additional-resource-tags"          = "Name=${var.cluster_name}-vault"
             "service.beta.kubernetes.io/aws-load-balancer-source-ranges"                     = join(",", var.allowed_cidr_blocks)
           }
