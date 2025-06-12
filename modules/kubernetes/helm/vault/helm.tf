@@ -22,29 +22,20 @@ resource "helm_release" "vault" {
           name   = var.vault_service_account
         }
 
-        # Completely disable persistent storage
+        # Enable persistent storage with gp2
         dataStorage = {
-          enabled = false
+          enabled      = true
+          size         = "10Gi"
+          storageClass = "gp2"
         }
 
         auditStorage = {
           enabled = false
         }
 
-        # Add custom volumes for emptyDir
-        volumes = [
-          {
-            name     = "vault-data"
-            emptyDir = {}
-          }
-        ]
-
-        volumeMounts = [
-          {
-            name      = "vault-data"
-            mountPath = "/vault/file"
-          }
-        ]
+        # Remove custom volumes since we're using persistent storage
+        volumes      = []
+        volumeMounts = []
 
         # Single instance, no HA
         ha = {
@@ -77,8 +68,22 @@ resource "helm_release" "vault" {
 
         service = {
           enabled = true
-          type    = "ClusterIP"
+          type    = "LoadBalancer"
           port    = 8200
+          annotations = {
+            "service.beta.kubernetes.io/aws-load-balancer-type"                              = "nlb"
+            "service.beta.kubernetes.io/aws-load-balancer-subnets"                           = join(",", var.public_subnet_ids)
+            "service.beta.kubernetes.io/aws-load-balancer-scheme"                            = "internet-facing"
+            "service.beta.kubernetes.io/aws-load-balancer-internal"                          = "false"
+            "service.beta.kubernetes.io/aws-load-balancer-ssl-cert"                          = ""
+            "service.beta.kubernetes.io/aws-load-balancer-ssl-ports"                         = "8200"
+            "service.beta.kubernetes.io/aws-load-balancer-ssl-redirect"                      = "true"
+            "service.beta.kubernetes.io/aws-load-balancer-ssl-negotiation-policy"            = "ELBSecurityPolicy-TLS-1-2-2017-01"
+            "service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled" = "true"
+            "service.beta.kubernetes.io/aws-load-balancer-attributes"                        = "idle_timeout.timeout_seconds=60"
+            "service.beta.kubernetes.io/aws-load-balancer-additional-resource-tags"          = "Name=${var.cluster_name}-vault"
+            "service.beta.kubernetes.io/aws-load-balancer-source-ranges"                     = join(",", var.allowed_cidr_blocks)
+          }
         }
 
         ingress = {

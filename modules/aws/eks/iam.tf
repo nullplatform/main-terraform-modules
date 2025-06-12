@@ -28,7 +28,7 @@ resource "aws_iam_policy" "nullplatform_metrics_eks_policy" {
 resource "aws_iam_policy" "ebs_csi_policy" {
   name        = "ebs-csi-policy"
   description = "Policy for EBS CSI driver"
-  policy      = jsonencode({
+  policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
       {
@@ -83,7 +83,7 @@ resource "aws_iam_policy" "ebs_csi_policy" {
         Resource = "*"
         Condition = {
           StringLike = {
-            "aws:RequestTag/ebs.csi.aws.com/cluster": "true"
+            "aws:RequestTag/ebs.csi.aws.com/cluster" : "true"
           }
         }
       },
@@ -95,7 +95,7 @@ resource "aws_iam_policy" "ebs_csi_policy" {
         Resource = "*"
         Condition = {
           StringLike = {
-            "aws:RequestTag/CSIVolumeName": "*"
+            "aws:RequestTag/CSIVolumeName" : "*"
           }
         }
       },
@@ -107,7 +107,7 @@ resource "aws_iam_policy" "ebs_csi_policy" {
         Resource = "*"
         Condition = {
           StringLike = {
-            "ec2:ResourceTag/CSIVolumeName": "*"
+            "ec2:ResourceTag/CSIVolumeName" : "*"
           }
         }
       },
@@ -119,7 +119,7 @@ resource "aws_iam_policy" "ebs_csi_policy" {
         Resource = "*"
         Condition = {
           StringLike = {
-            "ec2:ResourceTag/ebs.csi.aws.com/cluster": "true"
+            "ec2:ResourceTag/ebs.csi.aws.com/cluster" : "true"
           }
         }
       }
@@ -131,7 +131,7 @@ module "ebs_csi_irsa" {
   source  = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
   version = "~> 5.0"
 
-  role_name_prefix = "ebs-csi-"
+  role_name_prefix      = "ebs-csi-"
   attach_ebs_csi_policy = true
 
   oidc_providers = {
