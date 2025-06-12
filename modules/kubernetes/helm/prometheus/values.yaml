@@ -7,7 +7,16 @@ server:
       - ReadWriteOnce
   emptyDir: {}
   service:
-    type: ClusterIP
+    type: LoadBalancer
+    port: 80
+    targetPort: 9090
+    annotations:
+      service.beta.kubernetes.io/aws-load-balancer-type: nlb
+      service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+      service.beta.kubernetes.io/aws-load-balancer-internal: "false"
+      service.beta.kubernetes.io/aws-load-balancer-source-ranges: ${join(",", var.allowed_cidrs)}
+      service.beta.kubernetes.io/aws-load-balancer-subnets: ${join(",", var.public_subnet_ids)}
+      service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
 
 alertmanager:
   enabled: false
