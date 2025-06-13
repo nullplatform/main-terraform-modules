@@ -1,9 +1,24 @@
 server:
   persistentVolume:
-    enabled: false
+    enabled: true
+    size: 20Gi
+    storageClass: "gp2"
+    accessModes:
+      - ReadWriteOnce
   emptyDir: {}
   service:
-    type: ClusterIP
+    type: LoadBalancer
+    port: 80
+    targetPort: 9090
+    annotations:
+      service.beta.kubernetes.io/aws-load-balancer-type: nlb
+      service.beta.kubernetes.io/aws-load-balancer-scheme: ${load_balancer_scheme}
+      service.beta.kubernetes.io/aws-load-balancer-internal: "${load_balancer_scheme == "internal"}"
+      service.beta.kubernetes.io/aws-load-balancer-source-ranges: ${allowed_cidrs}
+      service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
+  extraFlags:
+    - web.enable-lifecycle
+
 
 alertmanager:
   enabled: false

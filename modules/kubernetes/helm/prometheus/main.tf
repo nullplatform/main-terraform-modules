@@ -6,6 +6,10 @@ resource "helm_release" "prometheus" {
   create_namespace = true
 
   values = [
-    file("${path.module}/values.yaml")
+    templatefile("${path.module}/values.yaml.tmpl", {
+      namespace            = var.namespace
+      load_balancer_scheme = var.load_balancer_scheme
+      allowed_cidrs        = join(",", var.allowed_cidrs)
+    })
   ]
 }

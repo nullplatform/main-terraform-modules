@@ -1,6 +1,3 @@
-## Hashicorp Vault
-This module installs an Standalone using ephemeral storage, only intended for POCs purposes. It has AWS KMS autounseal defined
-
 ## Requirements
 
 | Name | Version |
@@ -23,7 +20,9 @@ This module installs an Standalone using ephemeral storage, only intended for PO
 
 ## Modules
 
-No modules.
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_trusting_oidc"></a> [trusting\_oidc](#module\_trusting\_oidc) | ../../../aws/data/iam/eks/trusting | n/a |
 
 ## Resources
 
@@ -40,7 +39,6 @@ No modules.
 | [null_resource.vault_init](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 | [aws_eks_cluster.cluster](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/eks_cluster) | data source |
-| [aws_iam_openid_connect_provider.eks](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_openid_connect_provider) | data source |
 | [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region) | data source |
 | [local_file.vault_root_token](https://registry.terraform.io/providers/hashicorp/local/latest/docs/data-sources/file) | data source |
 
@@ -48,8 +46,11 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_allowed_cidr_blocks"></a> [allowed\_cidr\_blocks](#input\_allowed\_cidr\_blocks) | List of CIDR blocks allowed to access the load balancer | `list(string)` | <pre>[<br/>  "0.0.0.0/0"<br/>]</pre> | no |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | Name of the Kubernetes cluster | `string` | n/a | yes |
-| <a name="input_kms_key_id"></a> [kms\_key\_id](#input\_kms\_key\_id) | AWS KMS Key ID for auto-unseal | `string` | n/a | yes |
+| <a name="input_kms_key_id"></a> [kms\_key\_id](#input\_kms\_key\_id) | AWS KMS Key ID for auto-unseal | `string` | `""` | no |
+| <a name="input_load_balancer_scheme"></a> [load\_balancer\_scheme](#input\_load\_balancer\_scheme) | Load balancer scheme - 'internet-facing' for public access or 'internal' for private access | `string` | `"internal"` | no |
+| <a name="input_public_subnet_ids"></a> [public\_subnet\_ids](#input\_public\_subnet\_ids) | List of public subnet IDs for the load balancer | `list(string)` | n/a | yes |
 | <a name="input_vault_namespace"></a> [vault\_namespace](#input\_vault\_namespace) | Kubernetes namespace for Vault | `string` | `"vault"` | no |
 | <a name="input_vault_service_account"></a> [vault\_service\_account](#input\_vault\_service\_account) | Vault service account name | `string` | `"vault"` | no |
 | <a name="input_wait_timeout"></a> [wait\_timeout](#input\_wait\_timeout) | The time it waits for pods to be ready | `string` | `"300s"` | no |
