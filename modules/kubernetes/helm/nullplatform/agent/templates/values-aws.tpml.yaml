@@ -1,0 +1,12 @@
+serviceAccount:
+  annotations:
+    eks.amazonaws.com/role-arn: "${resourceIdentity}"
+configuration:
+  values:
+    NP_API_KEY: "${np_api_key}"
+    TAGS: "${tags}"
+    GITHUB_USER: "${github_user}"
+    GITHUB_TOKEN: "${github_token}"
+    GITHUB_REPO: "${github_repo}"
+    CLUSTER_NAME: "${cluster_name}"
+    NAMESPACE: "${namespace}"
