@@ -8,7 +8,8 @@ locals {
     github_token          = var.github_token
     github_user           = var.github_user
     np_api_key            = var.np_api_key
-    resourceIdentity      = aws_iam_role.role.arn
+    resource_identity     = aws_iam_role.role.arn
+    init_scripts          = var.init_scripts
   })
 }
 # Helm release

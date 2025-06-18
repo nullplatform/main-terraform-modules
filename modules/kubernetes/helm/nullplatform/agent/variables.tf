@@ -51,4 +51,8 @@ variable "cloud_name" {
   }
 }
 
-
+variable "init_scripts" {
+  description = "Additional scripts to run before init"
+  type        = list(string)
+  default     = []
+}
