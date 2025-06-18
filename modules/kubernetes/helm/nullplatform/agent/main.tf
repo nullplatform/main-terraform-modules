@@ -1,15 +1,15 @@
 locals {
   agent_values = templatefile("${path.module}/templates/values-${var.cloud_name}.tmpl.yaml", {
-    github_repo           = var.github_repo
-    cluster_name          = var.cluster_name
-    namespace             = var.namespace
-    service_account_name  = var.service_account_name
-    tags                  = var.tags
-    github_token          = var.github_token
-    github_user           = var.github_user
-    np_api_key            = var.np_api_key
-    resource_identity     = aws_iam_role.role.arn
-    init_scripts          = var.init_scripts
+    github_repo          = var.github_repo
+    cluster_name         = var.cluster_name
+    namespace            = var.namespace
+    service_account_name = var.service_account_name
+    tags                 = var.tags
+    github_token         = var.github_token
+    github_user          = var.github_user
+    np_api_key           = var.np_api_key
+    resource_identity    = aws_iam_role.role.arn
+    init_scripts         = var.init_scripts
   })
 }
 # Helm release
