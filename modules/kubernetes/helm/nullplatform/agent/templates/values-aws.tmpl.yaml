@@ -15,3 +15,5 @@ initScripts:
 %{ for script in init_scripts ~}
   - ${script}
 %{ endfor ~}
+image:
+  tag: rc
