@@ -52,7 +52,7 @@ variable "cloud_name" {
 }
 
 variable "init_scripts" {
-  description = "Additional scripts to run before init"
+  description = "List of shell commands to be executed before the container starts."
   type        = list(string)
   default     = []
 }
