@@ -44,11 +44,15 @@ variable "np_api_key" {
 
 variable "cloud_name" {
   description = "The provider cloud where the agent is deployed"
-  type = string
+  type        = string
   validation {
     condition     = contains(["aws", "gcp", "azure"], var.cloud_name)
     error_message = "The provider cloud must be one of: aws, gcp, or azure."
   }
 }
 
-
+variable "init_scripts" {
+  description = "List of shell commands to be executed before the container starts."
+  type        = list(string)
+  default     = []
+}
