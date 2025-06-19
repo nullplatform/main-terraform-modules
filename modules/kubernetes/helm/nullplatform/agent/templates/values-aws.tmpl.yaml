@@ -10,6 +10,7 @@ configuration:
     GITHUB_REPO: "${github_repo}"
     CLUSTER_NAME: "${cluster_name}"
     NAMESPACE: "${namespace}"
+
 initScripts:
   - apk add --no-cache curl ca-certificates bash openssl aws-cli gettext gomplate jq yq go
 %{ for script in init_scripts ~}
