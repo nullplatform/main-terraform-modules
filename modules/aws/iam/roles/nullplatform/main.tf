@@ -149,6 +149,7 @@ resource "aws_iam_role" "nullplatform_telemetry_manager_role" {
     name   = "eks-manager-policy"
     policy = aws_iam_policy.nullplatform_eks_manager_policy.policy
   }
+  permissions_boundary = var.permissions_boundary_arn
 }
 
 resource "aws_iam_user" "nullplatform_build_workflow_user" {

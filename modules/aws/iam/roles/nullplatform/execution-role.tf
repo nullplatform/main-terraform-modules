@@ -14,6 +14,7 @@ resource "aws_iam_role" "null-instance-role" {
   ]
 }
 EOF
+  permissions_boundary = var.permissions_boundary_arn
 }
 
 resource "aws_iam_policy_attachment" "null-instance-lambda-execution-attach" {

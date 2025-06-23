@@ -2,6 +2,7 @@ resource "aws_iam_role" "role" {
   name = "nullplatform-agent-role-${var.cluster_name}"
 
   assume_role_policy = jsonencode(module.trusting_oidc.trusting)
+
 }
 
 # Route 53 Policy
