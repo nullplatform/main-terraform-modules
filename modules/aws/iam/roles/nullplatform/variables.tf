@@ -25,3 +25,9 @@ variable "parameters_encryption_arns" {
   type        = list(string)
   description = "Parameters secret arn"
 }
+
+variable "permissions_boundary_arn" {
+  type        = string
+  description = "ARN de la permissions boundary to roles"
+  default     = null
+}
