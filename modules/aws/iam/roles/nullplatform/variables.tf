@@ -28,6 +28,6 @@ variable "parameters_encryption_arns" {
 
 variable "permissions_boundary_arn" {
   type        = string
-  description = "ARN de la permissions boundary to roles"
+  description = "ARN of the permissions boundary to roles"
   default     = null
 }
