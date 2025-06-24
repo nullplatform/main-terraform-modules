@@ -1,6 +1,6 @@
 resource "aws_iam_role" "null-instance-role" {
-  name               = "null-instance-role"
-  assume_role_policy = <<EOF
+  name                 = "null-instance-role"
+  assume_role_policy   = <<EOF
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -14,6 +14,7 @@ resource "aws_iam_role" "null-instance-role" {
   ]
 }
 EOF
+  permissions_boundary = var.permissions_boundary_arn
 }
 
 resource "aws_iam_policy_attachment" "null-instance-lambda-execution-attach" {

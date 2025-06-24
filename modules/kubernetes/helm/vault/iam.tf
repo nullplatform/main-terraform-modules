@@ -2,6 +2,8 @@ resource "aws_iam_role" "vault_kms_role" {
   name = "vault-kms-role-${var.cluster_name}"
 
   assume_role_policy = jsonencode(module.trusting_oidc.trusting)
+
+
 }
 
 

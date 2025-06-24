@@ -40,6 +40,7 @@ resource "aws_iam_role" "nullplatform_scope_workflow_role" {
     name   = "params-manager-policy"
     policy = aws_iam_policy.nullplatform_params_manager_policy.policy
   }
+  permissions_boundary = var.permissions_boundary_arn
 }
 
 resource "aws_iam_policy" "nullplatform_route53_manager_policy" {
