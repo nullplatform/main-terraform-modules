@@ -65,6 +65,9 @@ module "eks" {
       groups   = ["eks:k8s-metrics", "np:pod-reader", "system:masters"]
     }
   ]
+
+  permissions_boundary  = var.iam_role_permissions_boundary
+  
 }
 
 
