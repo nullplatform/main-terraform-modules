@@ -48,7 +48,9 @@ module "eks" {
       min_size     = 1
       max_size     = 10
       desired_size = 2
+      iam_role_permissions_boundary = var.iam_role_permissions_boundary
     }
+
   }
 
   manage_aws_auth_configmap = true
@@ -65,9 +67,6 @@ module "eks" {
       groups   = ["eks:k8s-metrics", "np:pod-reader", "system:masters"]
     }
   ]
-
-  iam_role_permissions_boundary = var.iam_role_permissions_boundary
 }
-
 
 
