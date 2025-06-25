@@ -65,12 +65,8 @@ module "eks" {
       groups   = ["eks:k8s-metrics", "np:pod-reader", "system:masters"]
     }
   ]
-}
 
-module "eks_managed_node_group" {
-  source = "terraform-aws-modules/eks/aws//modules/eks-managed-node-group"
   iam_role_permissions_boundary = var.iam_role_permissions_boundary
-
 }
 
 
