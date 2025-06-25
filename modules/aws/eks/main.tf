@@ -69,7 +69,7 @@ module "eks" {
 
 module "eks_managed_node_group" {
   source = "terraform-aws-modules/eks/aws//modules/eks-managed-node-group"
-  permissions_boundary  = var.iam_role_permissions_boundary
+  iam_role_permissions_boundary = var.iam_role_permissions_boundary
 
 }
 
