@@ -11,6 +11,7 @@ module "lb_role" {
       namespace_service_accounts = ["kube-system:aws-load-balancer-controller"]
     }
   }
+  role_permissions_boundary_arn = var.iam_role_permissions_boundary
 }
 
 resource "kubernetes_service_account" "service-account" {
