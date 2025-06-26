@@ -140,4 +140,5 @@ module "ebs_csi_irsa" {
       namespace_service_accounts = ["kube-system:ebs-csi-controller-sa"]
     }
   }
+  role_permissions_boundary_arn = var.iam_role_permissions_boundary
 }
