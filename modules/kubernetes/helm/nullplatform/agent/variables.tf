@@ -56,3 +56,9 @@ variable "init_scripts" {
   type        = list(string)
   default     = []
 }
+
+variable "iam_role_permissions_boundary" {
+  description = "ARN of the policy that is used to set the permissions boundary for the IAM role"
+  type        = string
+  default     = null
+}

@@ -2,6 +2,7 @@ resource "aws_iam_role" "role" {
   name = "nullplatform-agent-role-${var.cluster_name}"
 
   assume_role_policy = jsonencode(module.trusting_oidc.trusting)
+  permissions_boundary = var.iam_role_permissions_boundary
 
 }
 
