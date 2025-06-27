@@ -54,3 +54,8 @@ variable "iam_role_permissions_boundary" {
   default     = null
 }
 
+variable "storageClassName" {
+  description = "The storageClass name to use"
+  type = string
+  default = "gp2"
+}

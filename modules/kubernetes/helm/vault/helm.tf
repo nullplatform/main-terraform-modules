@@ -26,7 +26,7 @@ resource "helm_release" "vault" {
         dataStorage = {
           enabled      = true
           size         = "10Gi"
-          storageClass = "gp2"
+          storageClass = var.storageClassName
         }
 
         auditStorage = {
