@@ -10,7 +10,7 @@ resource "helm_release" "prometheus" {
       namespace            = var.namespace
       load_balancer_scheme = var.load_balancer_scheme
       allowed_cidrs        = join(",", var.allowed_cidrs)
-      storageClassName = var.storageClassName
+      storageClassName     = var.storageClassName
     })
   ]
 }

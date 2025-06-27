@@ -45,9 +45,9 @@ module "eks" {
 
   eks_managed_node_groups = {
     default = {
-      min_size     = 1
-      max_size     = 10
-      desired_size = 2
+      min_size                      = 1
+      max_size                      = 10
+      desired_size                  = 2
       iam_role_permissions_boundary = var.iam_role_permissions_boundary
     }
 

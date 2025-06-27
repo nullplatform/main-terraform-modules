@@ -22,6 +22,6 @@ variable "load_balancer_scheme" {
 
 variable "storageClassName" {
   description = "The storageClass name to use"
-  type = string
-  default = "gp2"
+  type        = string
+  default     = "gp2"
 }
