@@ -53,6 +53,46 @@ resource "aws_iam_policy" "load_balancer_policy" {
   })
 }
 
+resource "aws_iam_policy" "irsa_policy" {
+  name        = "irsa_policy"
+  description = "IAM policy for managing IAM roles and EKS cluster description"
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = [
+          "iam:CreateRole",
+          "iam:PutRolePolicy",
+          "iam:AttachRolePolicy",
+          "iam:ListAttachedRolePolicies",
+          "iam:DetachRolePolicy",
+          "iam:ListRolePolicies",
+          "iam:DeleteRolePolicy",
+          "iam:DeleteRole",
+          "iam:TagRole",
+          "iam:PutRolePermissionsBoundary"
+        ]
+        Resource = "*"
+      },
+      {
+        Effect = "Allow"
+        Action = [
+          "sts:GetCallerIdentity"
+        ]
+        Resource = "*"
+      },
+      {
+        Effect = "Allow"
+        Action = [
+          "eks:DescribeCluster"
+        ]
+        Resource = "*"
+      }
+    ]
+  })
+}
+
 # Attach policies to the role
 resource "aws_iam_role_policy_attachment" "agent_route53" {
   policy_arn = aws_iam_policy.route53_policy.arn
@@ -61,5 +101,11 @@ resource "aws_iam_role_policy_attachment" "agent_route53" {
 
 resource "aws_iam_role_policy_attachment" "agent_load_balancer" {
   policy_arn = aws_iam_policy.load_balancer_policy.arn
+  role       = aws_iam_role.role.name
+}
+
+
+resource "aws_iam_role_policy_attachment" "agent_irsa" {
+  policy_arn = aws_iam_policy.irsa_policy.arn
   role       = aws_iam_role.role.name
 }

@@ -19,15 +19,17 @@
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_trusting_oidc"></a> [trusting\_oidc](#module\_trusting\_oidc) | ../../aws/data/iam/eks/trusting | n/a |
+| <a name="module_trusting_oidc"></a> [trusting\_oidc](#module\_trusting\_oidc) | ../../../../aws/data/iam/eks/trusting | n/a |
 
 ## Resources
 
 | Name | Type |
 |------|------|
+| [aws_iam_policy.irsa_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.load_balancer_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.route53_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_role.role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy_attachment.agent_irsa](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.agent_load_balancer](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.agent_route53](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [helm_release.agent](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
@@ -38,6 +40,7 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_cloud_name"></a> [cloud\_name](#input\_cloud\_name) | The provider cloud where the agent is deployed | `string` | n/a | yes |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | Name of the EKS cluster | `string` | n/a | yes |
 | <a name="input_github_repo"></a> [github\_repo](#input\_github\_repo) | GitHub repository | `string` | n/a | yes |
 | <a name="input_github_token"></a> [github\_token](#input\_github\_token) | GitHub token | `string` | n/a | yes |
