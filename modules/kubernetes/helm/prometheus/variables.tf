@@ -19,3 +19,9 @@ variable "load_balancer_scheme" {
     error_message = "Load balancer scheme must be either 'internet-facing' or 'internal'."
   }
 }
+
+variable "storageClassName" {
+  description = "The storageClass name to use"
+  type = string
+  default = "gp2"
+}
