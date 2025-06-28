@@ -22,7 +22,7 @@ variable "visibility" {
   description = "the scheme of the LB"
   type        = string
   validation {
-    condition     = contains(["aws", "gcp", "azure"], var.visibility)
+    condition     = contains(["internal", "internet-facing"], var.visibility)
     error_message = "the schema of the LB must be internet-facing or internal"
   }
 }
