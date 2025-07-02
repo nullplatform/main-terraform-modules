@@ -56,3 +56,7 @@ variable "init_scripts" {
   type        = list(string)
   default     = []
 }
+
+variable "vault_token" {}
+
+variable "vault_url" {}

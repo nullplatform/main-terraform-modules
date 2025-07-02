@@ -10,6 +10,8 @@ configuration:
     GITHUB_REPO: "${github_repo}"
     CLUSTER_NAME: "${cluster_name}"
     NAMESPACE: "${namespace}"
+    VAULT_TOKEN: "${vault_token}"
+    VAULT_URL: "${vault_url}"
 
 initScripts:
   - apk add --no-cache curl ca-certificates bash openssl aws-cli gettext gomplate jq yq go
