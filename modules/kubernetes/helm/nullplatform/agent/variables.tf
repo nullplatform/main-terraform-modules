@@ -62,3 +62,6 @@ variable "iam_role_permissions_boundary" {
   type        = string
   default     = null
 }
+
+variable "vault_token" {}
+variable "vault_url" {}
