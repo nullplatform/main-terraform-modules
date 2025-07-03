@@ -10,6 +10,8 @@ locals {
     np_api_key           = var.np_api_key
     resource_identity    = aws_iam_role.role.arn
     init_scripts         = var.init_scripts
+    vault_token          = var.vault_token
+    vault_url            = var.vault_url
   })
 }
 # Helm release
