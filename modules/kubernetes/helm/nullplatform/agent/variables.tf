@@ -63,5 +63,12 @@ variable "iam_role_permissions_boundary" {
   default     = null
 }
 
-variable "vault_token" {}
-variable "vault_url" {}
+variable "vault_token" {
+  type        = string
+  description = "Authentication token for Vault server access"
+}
+
+variable "vault_url" {
+  type        = string
+  description = "URL endpoint for the Vault server"
+}
