@@ -1,6 +1,14 @@
 serviceAccount:
   annotations:
     eks.amazonaws.com/role-arn: "${resource_identity}"
+args:
+  - "--tags=$(TAGS)"
+  - "--apikey=$(NP_API_KEY)"
+  - "--runtime=host"
+  - "--command-executor-env=NP_API_KEY=$(NP_API_KEY),VAULT_ADDR=$(VAULT_URL),VAULT_TOKEN=$(VAULT_TOKEN)"
+  - "--command-executor-debug"
+  - "--webserver-enabled"
+  - "--command-executor-git-command-repos https://$(GITHUB_TOKEN)@$(GITHUB_REPO)#$(GITHUB_BRANCH)"
 configuration:
   values:
     NP_API_KEY: "${np_api_key}"
