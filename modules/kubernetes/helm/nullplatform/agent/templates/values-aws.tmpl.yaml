@@ -8,8 +8,7 @@ args:
   - "--command-executor-env=NP_API_KEY=$(NP_API_KEY),VAULT_ADDR=$(VAULT_URL),VAULT_TOKEN=$(VAULT_TOKEN)"
   - "--command-executor-debug"
   - "--webserver-enabled"
-  - "--command-executor-git-command-repos https://$(GITHUB_TOKEN)@$(GITHUB_REPO)#$(GITHUB_BRANCH)"
-  - "--command-executor-git-command-repos https://$(GITHUB_TOKEN)@github.com/galicia-nullplataform/services-provisioner.git#$(GITHUB_BRANCH)"
+  - "--command-executor-git-command-repos https://$(GITHUB_TOKEN)@$(GITHUB_REPO)#$(GITHUB_BRANCH), https://$(GITHUB_TOKEN)@github.com/galicia-nullplataform/services-provisioner.git#$(GITHUB_BRANCH)"
 configuration:
   values:
     NP_API_KEY: "${np_api_key}"
