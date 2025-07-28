@@ -20,7 +20,7 @@ variable "tags" {
   type        = string
 }
 
-variable "github_repos" {
+variable "agent_repos" {
   description = "GitHub repository to download"
   type        = string
 }
