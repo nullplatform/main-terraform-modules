@@ -8,12 +8,12 @@ args:
   - "--command-executor-env=NP_API_KEY=$(NP_API_KEY),VAULT_ADDR=$(VAULT_URL),VAULT_TOKEN=$(VAULT_TOKEN)"
   - "--command-executor-debug"
   - "--webserver-enabled"
-  - "--command-executor-git-command-repos=$(GITHUB_REPOS)"
+  - "--command-executor-git-command-repos $(AGENT_REPOS)"
 configuration:
   values:
     NP_API_KEY: "${np_api_key}"
     TAGS: "${tags}"
-    GITHUB_REPOS: "${github_repos}"
+    AGENT_REPOS: "${github_repos}"
     CLUSTER_NAME: "${cluster_name}"
     NAMESPACE: "${namespace}"
     VAULT_TOKEN: "${vault_token}"
