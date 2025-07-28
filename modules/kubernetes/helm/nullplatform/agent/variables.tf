@@ -31,8 +31,8 @@ variable "github_user" {
   type        = string
 }
 
-variable "github_repo" {
-  description = "GitHub repository"
+variable "github_repos" {
+  description = "GitHub repository to download"
   type        = string
 }
 

@@ -1,6 +1,6 @@
 locals {
   agent_values = templatefile("${path.module}/templates/values-${var.cloud_name}.tmpl.yaml", {
-    github_repo          = var.github_repo
+    github_repos          = var.github_repos
     cluster_name         = var.cluster_name
     namespace            = var.namespace
     service_account_name = var.service_account_name

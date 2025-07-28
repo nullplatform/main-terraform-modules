@@ -14,7 +14,7 @@ configuration:
     NP_API_KEY: "${np_api_key}"
     TAGS: "${tags}"
     GITHUB_USER: "${github_user}"
-    GITHUB_REPOS: "${github_repo}"
+    GITHUB_REPOS: "${github_repos}"
     CLUSTER_NAME: "${cluster_name}"
     NAMESPACE: "${namespace}"
     VAULT_TOKEN: "${vault_token}"
