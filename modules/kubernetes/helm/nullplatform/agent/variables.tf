@@ -20,17 +20,6 @@ variable "tags" {
   type        = string
 }
 
-variable "github_token" {
-  description = "GitHub token"
-  type        = string
-  sensitive   = true
-}
-
-variable "github_user" {
-  description = "GitHub user"
-  type        = string
-}
-
 variable "github_repos" {
   description = "GitHub repository to download"
   type        = string
