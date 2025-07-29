@@ -13,7 +13,7 @@ configuration:
   values:
     NP_API_KEY: "${np_api_key}"
     TAGS: "${tags}"
-    AGENT_REPOS: "${github_repos}"
+    AGENT_REPOS: "${agent_repos}"
     CLUSTER_NAME: "${cluster_name}"
     NAMESPACE: "${namespace}"
     VAULT_TOKEN: "${vault_token}"
