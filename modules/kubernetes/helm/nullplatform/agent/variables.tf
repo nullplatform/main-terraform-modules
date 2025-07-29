@@ -61,3 +61,11 @@ variable "vault_url" {
   type        = string
   description = "URL endpoint for the Vault server"
 }
+
+variable "agent_memory_request" {
+  default = "256Mi"
+}
+
+variable "agent_memory_limit" {
+  default = "512Mi"
+}
