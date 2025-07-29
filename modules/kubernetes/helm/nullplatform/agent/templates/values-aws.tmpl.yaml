@@ -8,14 +8,12 @@ args:
   - "--command-executor-env=NP_API_KEY=$(NP_API_KEY),VAULT_ADDR=$(VAULT_URL),VAULT_TOKEN=$(VAULT_TOKEN)"
   - "--command-executor-debug"
   - "--webserver-enabled"
-  - "--command-executor-git-command-repos https://$(GITHUB_TOKEN)@$(GITHUB_REPO)#$(GITHUB_BRANCH),https://$(GITHUB_TOKEN)@github.com/galicia-nullplataform/services-provisioner.git#$(GITHUB_BRANCH)"
+  - "--command-executor-git-command-repos $(AGENT_REPOS)"
 configuration:
   values:
     NP_API_KEY: "${np_api_key}"
     TAGS: "${tags}"
-    GITHUB_USER: "${github_user}"
-    GITHUB_TOKEN: "${github_token}"
-    GITHUB_REPO: "${github_repo}"
+    AGENT_REPOS: "${agent_repos}"
     CLUSTER_NAME: "${cluster_name}"
     NAMESPACE: "${namespace}"
     VAULT_TOKEN: "${vault_token}"
@@ -27,3 +25,8 @@ initScripts:
 %{ endfor ~}
 image:
   tag: rc
+resources:
+  requests:
+    memory: "${agent_memory_request}"
+  limits:
+    memory: "${agent_memory_limit}"

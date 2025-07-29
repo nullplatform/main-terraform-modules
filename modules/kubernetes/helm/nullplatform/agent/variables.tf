@@ -20,19 +20,8 @@ variable "tags" {
   type        = string
 }
 
-variable "github_token" {
-  description = "GitHub token"
-  type        = string
-  sensitive   = true
-}
-
-variable "github_user" {
-  description = "GitHub user"
-  type        = string
-}
-
-variable "github_repo" {
-  description = "GitHub repository"
+variable "agent_repos" {
+  description = "GitHub repository to download"
   type        = string
 }
 
@@ -71,4 +60,16 @@ variable "vault_token" {
 variable "vault_url" {
   type        = string
   description = "URL endpoint for the Vault server"
+}
+
+variable "agent_memory_request" {
+  description = "Memory request for the agent container"
+  type        = string
+  default     = "512Mi"
+}
+
+variable "agent_memory_limit" {
+  description = "Memory limit for the agent container"
+  type        = string
+  default     = "1024Mi"
 }
