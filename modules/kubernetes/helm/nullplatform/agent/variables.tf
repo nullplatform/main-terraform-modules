@@ -63,9 +63,13 @@ variable "vault_url" {
 }
 
 variable "agent_memory_request" {
-  default = "256Mi"
+  description = "Memory request for the agent container"
+  type        = string
+  default = "512Mi"
 }
 
 variable "agent_memory_limit" {
-  default = "512Mi"
+  description = "Memory limit for the agent container"
+  type        = string
+  default = "1024Mi"
 }
