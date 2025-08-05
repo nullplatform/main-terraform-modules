@@ -23,8 +23,6 @@ initScripts:
 %{ for script in init_scripts ~}
   - ${script}
 %{ endfor ~}
-image:
-  tag: rc
 resources:
   requests:
     memory: "${agent_memory_request}"
