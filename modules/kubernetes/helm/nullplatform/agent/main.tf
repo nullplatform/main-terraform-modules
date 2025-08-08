@@ -12,6 +12,8 @@ locals {
     vault_url            = var.vault_url
     agent_memory_request = var.agent_memory_request
     agent_memory_limit   = var.agent_memory_limit
+    agent_cpu_request = var.agent_cpu_request
+    agent_cpu_limit   = var.agent_cpu_limit
   })
 }
 # Helm release
