@@ -31,4 +31,4 @@ resources:
     cpu: "${agent_cpu_request}"
   limits:
     memory: "${agent_memory_limit}"
-    cpu: "${agent_cpu_request}"
+    cpu: "${agent_cpu_limit}"
