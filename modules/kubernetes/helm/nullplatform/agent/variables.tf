@@ -68,8 +68,20 @@ variable "agent_memory_request" {
   default     = "512Mi"
 }
 
+variable "agent_cpu_request" {
+  description = "CPU request for the agent container"
+  type        = string
+  default     = "500m"
+}
+
 variable "agent_memory_limit" {
   description = "Memory limit for the agent container"
   type        = string
   default     = "1024Mi"
+}
+
+variable "agent_cpu_limit" {
+  description = "CPU limit for the agent container"
+  type        = string
+  default     = "1000m"
 }
