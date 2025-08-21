@@ -3,6 +3,7 @@ data "aws_region" "current" {
 
 module "lb_role" {
   source                                 = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
+  version                                = "~> 5.60"
   role_name                              = "${var.cluster_name}_eks_lb_${var.suffix}"
   attach_load_balancer_controller_policy = true
   oidc_providers = {
@@ -37,29 +38,31 @@ resource "helm_release" "lb" {
   depends_on = [
     kubernetes_service_account.service-account
   ]
-  set {
-    name  = "region"
-    value = data.aws_region.current.name
-  }
-  set {
-    name  = "vpcId"
-    value = var.vpc_id
-  }
-  set {
-    name  = "image.repository"
-    value = "602401143452.dkr.ecr.${data.aws_region.current.name}.amazonaws.com/amazon/aws-load-balancer-controller"
-  }
-  set {
-    name  = "serviceAccount.create"
-    value = "false"
-  }
-  set {
-    name  = "serviceAccount.name"
-    value = "aws-load-balancer-controller"
-  }
-  set {
-    name  = "clusterName"
-    value = var.cluster_name
-  }
+  set = [
+    {
+      name  = "region"
+      value = data.aws_region.current.name
+    },
+    {
+      name  = "vpcId"
+      value = var.vpc_id
+    },
+    {
+      name  = "image.repository"
+      value = "602401143452.dkr.ecr.${data.aws_region.current.name}.amazonaws.com/amazon/aws-load-balancer-controller"
+    },
+    {
+      name  = "serviceAccount.create"
+      value = "false"
+    },
+    {
+      name  = "serviceAccount.name"
+      value = "aws-load-balancer-controller"
+    },
+    {
+      name  = "clusterName"
+      value = var.cluster_name
+    }
+  ]
 }
 
