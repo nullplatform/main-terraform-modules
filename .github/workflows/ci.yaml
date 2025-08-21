@@ -34,11 +34,6 @@ jobs:
           chmod +x terraform-docs
           mv terraform-docs /home/runner/work/terraform-docs
 
-      - name: Clean Terraform cache
-        run: |
-          rm -rf .terraform .terraform.lock.hcl
-          terraform init
-          
       - name: Validate Terraform modules
         run: |
           set +e  # Disable immediate exit on error
