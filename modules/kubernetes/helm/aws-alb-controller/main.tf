@@ -3,7 +3,7 @@ data "aws_region" "current" {
 
 module "lb_role" {
   source                                 = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
-  version = "~> 5.0"
+  version = "~> 5.60"
   role_name                              = "${var.cluster_name}_eks_lb_${var.suffix}"
   attach_load_balancer_controller_policy = true
   oidc_providers = {
