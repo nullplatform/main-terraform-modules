@@ -31,7 +31,6 @@ resource "kubernetes_service_account" "service-account" {
 }
 
 resource "helm_release" "lb" {
-  version = "~> 2.0"
   name       = "aws-load-balancer-controller"
   repository = "https://aws.github.io/eks-charts"
   chart      = "aws-load-balancer-controller"
