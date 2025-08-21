@@ -65,24 +65,24 @@ variable "vault_url" {
 variable "agent_memory_request" {
   description = "Memory request for the agent container"
   type        = string
-  default = ""
+  default     = ""
 
 }
 
 variable "agent_cpu_request" {
   description = "CPU request for the agent container"
   type        = string
-  default = ""
+  default     = ""
 }
 
 variable "agent_memory_limit" {
   description = "Memory limit for the agent container"
   type        = string
-  default = ""
+  default     = ""
 }
 
 variable "agent_cpu_limit" {
   description = "CPU limit for the agent container"
   type        = string
-  default = ""
+  default     = ""
 }
