@@ -20,6 +20,8 @@ resource "helm_release" "agent" {
   namespace        = var.namespace
   create_namespace = true
 
+  force_update = true
+  
   values = [local.agent_values]
 
   depends_on = [
