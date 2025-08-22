@@ -42,3 +42,9 @@ variable "hosted_public_zone_id" {
   type        = string
   description = "The Hosted zone if for the public dns"
 }
+
+variable "application_domain" {
+  type        = bool
+  description = "Enable application domain in networking configuration"
+  default     = true
+}
