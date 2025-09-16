@@ -54,6 +54,12 @@ variable "action_spec_names" {
   description = "List of action specification template names to fetch and create"
 }
 
+variable "use_tpl_files" {
+  type        = bool
+  default     = true
+  description = "Whether to use .tpl files (true) or .json files (false) for templates"
+}
+
 # NRN Patch Configuration
 variable "np_api_key" {
   type        = string

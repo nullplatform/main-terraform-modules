@@ -12,6 +12,11 @@ output "service_specification_slug" {
   description = "The slug of the created service specification"
 }
 
+output "slug" {
+  value       = nullplatform_service_specification.from_template.slug
+  description = "The slug of the created service specification"
+}
+
 output "scope_type_id" {
   value       = nullplatform_scope_type.from_template.id
   description = "The ID of the created scope type"
@@ -49,4 +54,9 @@ output "scope_name" {
 output "scope_description" {
   value       = var.scope_description
   description = "The name of the scope definition"
+}
+
+output "specification" {
+  value       = local.service_spec_parsed
+  description = "The attributes of the created service specification"
 }

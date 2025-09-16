@@ -4,14 +4,14 @@
 
 # Fetch service specification template
 data "http" "service_spec_template" {
-  url = "${var.github_repo_url}/raw/${var.github_ref}/${var.github_scope_path}/specs/service-spec.json.tpl"
+  url = "${var.github_repo_url}/raw/${var.github_ref}/${var.github_scope_path}/specs/service-spec.json${var.use_tpl_files ? ".tpl" : ""}"
 }
-
 # Fetch action specification templates
 data "http" "action_templates" {
-  for_each = toset(var.action_spec_names)
-  url      = "${var.github_repo_url}/raw/${var.github_ref}/${var.github_scope_path}/specs/actions/${each.key}.json.tpl"
+  for_each = toset(local.available_actions)
+  url      = "${var.github_repo_url}/raw/${var.github_ref}/${var.github_scope_path}/specs/actions/${each.key}.json${var.use_tpl_files ? ".tpl" : ""}"
 }
+
 
 ################################################################################
 # Step 2: Process and Create Service Specification
@@ -20,12 +20,13 @@ data "http" "action_templates" {
 locals {
     # Process the template by replacing the template variables
     # replace is done because some old templates contain gomplate placeholders
-    service_spec_rendered = replace(
+    service_spec_rendered = var.use_tpl_files ? replace(
         data.http.service_spec_template.response_body,
         "/\"{{\\s+env.Getenv\\s+\".*\"\\s+}}\"/",
         "\"${var.nrn}\""
-    )
+    ) : data.http.service_spec_template.response_body
     service_spec_parsed = jsondecode(local.service_spec_rendered)
+    available_actions = local.service_spec_parsed.available_actions
 }
 
 # Create service specification
@@ -76,22 +77,22 @@ resource "nullplatform_scope_type" "from_template" {
 # Step 4: Create Action Specifications
 ################################################################################
 
-# Process action templates - direct JSON parsing (they don't contain template variables)
+# Process action templates - conditional processing based on file type
 # replace is done because some old templates contain gomplate placeholders
 locals {
   action_specs_parsed = {
-    for name in var.action_spec_names :
-    name => jsondecode(replace(
+    for name in local.available_actions :
+    name => jsondecode(var.use_tpl_files ? replace(
         data.http.action_templates[name].response_body,
         "/\"{{\\s+env.Getenv\\s+\".*\"\\s+}}\"/",
         "\"\""
-    ))
+    ) : data.http.action_templates[name].response_body)
   }
 }
 
 # Create action specifications
 resource "nullplatform_action_specification" "from_templates" {
-  for_each   = toset(var.action_spec_names)
+  for_each   = toset(local.available_actions )
   depends_on = [nullplatform_service_specification.from_template]
 
   service_specification_id = local.service_specification_id
