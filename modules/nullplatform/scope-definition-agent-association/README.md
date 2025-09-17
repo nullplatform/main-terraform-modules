@@ -13,16 +13,15 @@ module "k8s_scope_definition" {
   github_ref      = "features/specs_for_automation"
   github_scope_path = "k8s"
   scope_name        = "K8S Webserver"
+  workflow_override_path = "../../nullplatform-training/partner-training/3-scopes-getting-started/scope-override"
   scope_description = "Webserver running in a Kubernetes cluster"
   
 }
 
 module "k8s_agent_asociation" {
   source = "git@github.com:nullplatform/main-terraform-modules.git//modules/nullplatform/scope-definition-agent-association?ref=alpha"
-  nrn        = var.np_account_nrn
   agent_api_key = var.np_api_key
-  scope_slug  = module.k8s_scope_definition.slug
-  agent_command = module.k8s_scope_definition.specification.agent_command
+  scope_definition=module.k8s_scope_definition
   agent_tags = { "environment" = "demo", "training" = "ingenia", "cluster" = "geisbruch" }
 }
 ```

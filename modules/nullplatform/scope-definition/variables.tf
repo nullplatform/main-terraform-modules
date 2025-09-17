@@ -13,6 +13,12 @@ variable "github_repo_url" {
   description = "GitHub repository URL containing templates"
 }
 
+variable "workflow_override_path" {
+  type = string
+  default = ""
+  description = "Path to a custom workflow file to override the default one"
+}
+
 variable "github_ref" {
   type        = string
   default     = "main"

@@ -60,3 +60,8 @@ output "specification" {
   value       = local.service_spec_parsed
   description = "The attributes of the created service specification"
 }
+
+output "workflow_override_path" {
+  value       = var.workflow_override_path
+  description = "The path to the custom workflow file"
+}

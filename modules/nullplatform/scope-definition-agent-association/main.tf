@@ -1,29 +1,29 @@
 resource "nullplatform_notification_channel" "channel_from_template" {
-  nrn    = var.nrn
+  nrn    = local.merged_config.nrn
   type   = "agent"
-  source = var.channel_sources
+  source = local.merged_config.channel_sources
   
 
   configuration {
     dynamic "agent" {
       for_each = [1]
       content {
-        api_key = var.agent_api_key
+        api_key = local.merged_config.agent_api_key
         command {
-          type = var.agent_command.type
+          type = local.merged_config.specification.agent_command.type
           data = {
-            cmdline = var.agent_command.data.cmdline
-            arguments = jsonencode(try(var.agent_command.data.arguments, []))
-            environment = jsonencode(try(var.agent_command.data.environment, {}))
+            cmdline = local.merged_config.workflow_override_path != "" ? "${local.merged_config.specification.agent_command.data.cmdline} --overrides-path=${local.merged_config.workflow_override_path}" : local.merged_config.specification.agent_command.data.cmdline
+            arguments = jsonencode(try(local.merged_config.specification.agent_command.data.arguments, []))
+            environment = jsonencode(try(local.merged_config.specification.agent_command.data.environment, {}))
           }
         }
       
-        selector = var.agent_tags
+        selector = local.merged_config.agent_tags
       }
     }
   }
 
   filters = jsonencode({
-    "service.specification.slug" = var.scope_slug
+    "service.specification.slug" = local.merged_config.slug
   })
 }
