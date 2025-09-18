@@ -13,7 +13,7 @@ module "k8s_scope_definition" {
   github_ref      = "features/specs_for_automation"
   github_scope_path = "k8s"
   scope_name        = "K8S Webserver"
-  workflow_override_path = "../../nullplatform-training/partner-training/3-scopes-getting-started/scope-override"
+  workflow_override_values = "../../nullplatform-training/partner-training/3-scopes-getting-started/scope-override/values.yaml"
   scope_description = "Webserver running in a Kubernetes cluster"
   
 }

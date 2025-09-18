@@ -19,6 +19,13 @@ variable "workflow_override_path" {
   description = "Path to a custom workflow file to override the default one"
 }
 
+variable "workflow_override_values" {
+  type = string
+  default = ""
+  description = "Values to override in the workflow file"
+  
+}
+
 variable "github_ref" {
   type        = string
   default     = "main"
@@ -58,6 +65,19 @@ variable "action_spec_names" {
     "kill-instances"
   ]
   description = "List of action specification template names to fetch and create"
+}
+
+variable "logs_provider" {
+  type        = string
+  default     = "external"
+  description = "The logs provider to be used"
+}
+
+variable "metrics_provider" {
+  type        = string
+  default     = "externalmetrics"
+  description = "The metrics provider to be used"
+  
 }
 
 variable "use_tpl_files" {

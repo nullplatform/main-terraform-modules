@@ -12,7 +12,11 @@ resource "nullplatform_notification_channel" "channel_from_template" {
         command {
           type = local.merged_config.specification.agent_command.type
           data = {
-            cmdline = local.merged_config.workflow_override_path != "" ? "${local.merged_config.specification.agent_command.data.cmdline} --overrides-path=${local.merged_config.workflow_override_path}" : local.merged_config.specification.agent_command.data.cmdline
+            cmdline = join(" ", compact([
+              local.merged_config.specification.agent_command.data.cmdline,
+              local.merged_config.workflow_override_path != "" ? "--overrides-path=${local.merged_config.workflow_override_path}" : "",
+              local.merged_config.workflow_override_values != "" ? "--values=${local.merged_config.workflow_override_values}" : ""
+            ]))
             arguments = jsonencode(try(local.merged_config.specification.agent_command.data.arguments, []))
             environment = jsonencode(try(local.merged_config.specification.agent_command.data.environment, {}))
           }
@@ -24,6 +28,9 @@ resource "nullplatform_notification_channel" "channel_from_template" {
   }
 
   filters = jsonencode({
-    "service.specification.slug" = local.merged_config.slug
+    "$or" = [
+      {"service.specification.slug" = {"$eq": local.merged_config.slug }},
+      {"arguments.scope_provider" = {"$eq": local.merged_config.scope_provider_id }}
+    ]
   })
 }

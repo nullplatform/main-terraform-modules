@@ -57,10 +57,26 @@ variable "agent_command" {
   
 }
 
+variable "workflow_override_values" {
+  type = string
+  default = "null"
+  description = "Values to override in the workflow file"
+  
+}
+
+variable "scope_provider_id" {
+  type        = string
+  description = "The ID of the scope provider associated with the scope definition"
+  default     = null
+  
+}
+
 variable "scope_definition" {
   type = object({
     slug = string,
     workflow_override_path = string,
+    workflow_override_values = string,
+    scope_provider_id = string,
     specification = object({
       agent_command = object({
         type = string
@@ -83,8 +99,10 @@ locals {
       channel_type    = var.channel_type
       agent_api_key   = var.agent_api_key
       slug      = var.scope_slug
+      scope_provider_id = var.scope_provider_id
       agent_command   = var.agent_command
       workflow_override_path = var.workflow_override_path
+      workflow_override_values = var.workflow_override_values
     },
     var.scope_definition
   )

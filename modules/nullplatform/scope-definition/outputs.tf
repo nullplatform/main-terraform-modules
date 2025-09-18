@@ -65,3 +65,14 @@ output "workflow_override_path" {
   value       = var.workflow_override_path
   description = "The path to the custom workflow file"
 }
+output "workflow_override_values" {
+  value       = var.workflow_override_values 
+  description = "The workflow override values"
+  
+}
+
+output "scope_provider_id" {
+  value       = nullplatform_service_specification.from_template.id
+  description = "The ID of the scope provider associated with the scope definition"
+  
+}

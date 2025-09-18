@@ -102,3 +102,25 @@ resource "nullplatform_action_specification" "from_templates" {
   results                  = jsonencode(local.action_specs_parsed[each.key].results)
   retryable                = try(local.action_specs_parsed[each.key].retryable, false)
 }
+
+resource "null_resource" "nrn_patch" {
+  depends_on = [nullplatform_service_specification.from_template]
+
+  triggers = {
+    nrn          = var.nrn
+    service_slug = local.service_slug
+  }
+
+  provisioner "local-exec" {
+    command = <<-EOT
+      np nrn patch --nrn "${var.nrn}" --body "{
+        \"global.${local.service_slug}_metric_provider\": \"${var.metrics_provider}\",
+        \"global.${local.service_slug}_log_provider\": \"${var.logs_provider}\"
+      }"
+    EOT
+
+    environment = {
+      NP_API_KEY = var.np_api_key
+    }
+  }
+}
