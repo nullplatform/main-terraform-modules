@@ -103,6 +103,7 @@ resource "nullplatform_action_specification" "from_templates" {
   retryable                = try(local.action_specs_parsed[each.key].retryable, false)
 }
 
+## TODO: Change by NRN API when available or provider
 resource "null_resource" "nrn_patch" {
   depends_on = [nullplatform_service_specification.from_template]
 
