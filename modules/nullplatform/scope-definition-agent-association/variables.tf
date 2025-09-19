@@ -93,7 +93,6 @@ variable "scope_definition" {
 
 locals {
   merged_config = merge(
-    var.scope_definition,
     {
       nrn             = var.nrn
       agent_tags      = var.agent_tags
@@ -105,6 +104,7 @@ locals {
       agent_command   = var.agent_command
       workflow_override_path = var.workflow_override_path
       workflow_override_values = var.workflow_override_values
-    }
+    },
+    var.scope_definition
   )
 }
