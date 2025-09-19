@@ -14,8 +14,8 @@ resource "nullplatform_notification_channel" "channel_from_template" {
           data = {
             cmdline = join(" ", compact([
               local.merged_config.specification.agent_command.data.cmdline,
-              local.merged_config.workflow_override_path != "" ? "--overrides-path=${local.merged_config.workflow_override_path}" : "",
-              local.merged_config.workflow_override_values != "" ? "--values=${local.merged_config.workflow_override_values}" : ""
+              local.merged_config.workflow_override_path != null ? "--overrides-path=${local.merged_config.workflow_override_path}" : "",
+              local.merged_config.workflow_override_values != null ? "--values=${local.merged_config.workflow_override_values}" : ""
             ]))
             arguments = jsonencode(try(local.merged_config.specification.agent_command.data.arguments, []))
             environment = jsonencode(try(local.merged_config.specification.agent_command.data.environment, {}))
