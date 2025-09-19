@@ -30,13 +30,13 @@ variable "git_repo" {
 
 variable "workflow_override_path" {
   type = string
-  default = ""
+  default = null
   description = "Path to a custom workflow file to override the default one"
 }
 
 variable "workflow_override_values" {
   type = string
-  default = ""
+  default = null
   description = "Values to override in the workflow file"
   
 }
