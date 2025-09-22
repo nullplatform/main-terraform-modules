@@ -6,11 +6,26 @@ variable "nrn" {
   type        = string
   description = "Nullplatform Resource Name (organization:account format)"
 }
-
-variable "github_repo_url" {
+variable "git_provider" {
   type        = string
-  default     = "https://github.com/nullplatform/scopes"
-  description = "GitHub repository URL containing templates"
+  default     = "github"
+  description = "Git provider (e.g., github, gitlab)"
+}
+variable "git_user" {
+  type        = string
+  default     = null
+  description = "Git username for authentication"
+}
+variable "git_password" {
+  type        = string
+  default     = null
+  sensitive = true
+  description = "Git password or token for authentication"
+}
+variable "git_repo" {
+  type        = string
+  default     = "nullplatform/scopes"
+  description = "GitHub repository containing templates"
 }
 
 variable "workflow_override_path" {
@@ -26,16 +41,16 @@ variable "workflow_override_values" {
   
 }
 
-variable "github_ref" {
+variable "git_ref" {
   type        = string
   default     = "main"
   description = "Git reference (branch, tag, or commit)"
 }
 
-variable "github_scope_path" {
+variable "git_scope_path" {
   type        = string
   default     = "k8s"
-  description = "Path within the repository for the specific scope (e.g., k8s, ecs)" 
+  description = "Path within the repository for the specific scope (e.g., k8s, ecs)"
 }
 
 variable "scope_name" {

@@ -33,16 +33,16 @@ output "nrn" {
   value       = var.nrn
   description = "The NRN of the created service specification"
 }
-output "github_repo_url" {
-  value       = var.github_repo_url
+output "git_repo_url" {
+  value       = var.git_repo
   description = "The GitHub repository URL associated with the service specification"
 }
-output "github_ref" {
-  value       = var.github_ref
+output "git_ref" {
+  value       = var.git_ref
   description = "The GitHub branch associated with the service specification"
 }
-output "github_scope_path" {
-  value       = var.github_scope_path
+output "git_scope_path" {
+  value       = var.git_scope_path
   description = "The GitHub path associated with the service specification"
 }
 
