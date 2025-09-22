@@ -29,7 +29,7 @@ locals {
     service_spec_rendered = var.use_tpl_files ? replace(
         data.http.service_spec_template.response_body,
         "/\"{{\\s+env.Getenv\\s+\".*\"\\s+}}\"/",
-        "\"${var.nrn}\""
+        "\"\""
     ) : data.http.service_spec_template.response_body
     service_spec_parsed = jsondecode(local.service_spec_rendered)
     available_actions = local.service_spec_parsed.available_actions
