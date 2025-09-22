@@ -92,19 +92,29 @@ variable "scope_definition" {
 }
 
 locals {
+  base_config = {
+    nrn                      = var.nrn
+    agent_tags               = var.agent_tags
+    channel_sources          = var.channel_sources
+    channel_type             = var.channel_type
+    agent_api_key            = var.agent_api_key
+    slug                     = var.scope_slug
+    scope_provider_id        = var.scope_provider_id
+    agent_command            = var.agent_command
+    workflow_override_path   = var.workflow_override_path
+    workflow_override_values = var.workflow_override_values
+  }
+  
   merged_config = merge(
+    local.base_config,
     {
-      nrn             = var.nrn
-      agent_tags      = var.agent_tags
-      channel_sources = var.channel_sources
-      channel_type    = var.channel_type
-      agent_api_key   = var.agent_api_key
-      slug      = var.scope_slug
-      scope_provider_id = var.scope_provider_id
-      agent_command   = var.agent_command
-      workflow_override_path = var.workflow_override_path
-      workflow_override_values = var.workflow_override_values
-    },
-    var.scope_definition
+      for k, v in var.scope_definition : k => (
+        # If key exists in base_config and scope_definition value is null,
+        # keep the base_config value, otherwise use scope_definition value
+        contains(keys(local.base_config), k) && v == null 
+          ? local.base_config[k] 
+          : v
+      )
+    }
   )
 }
