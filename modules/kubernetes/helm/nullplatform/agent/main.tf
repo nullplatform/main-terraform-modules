@@ -19,6 +19,7 @@ resource "helm_release" "agent" {
   repository       = "https://nullplatform.github.io/helm-charts"
   namespace        = var.namespace
   create_namespace = true
+  version = "2.12.0"
 
   force_update = true
 
