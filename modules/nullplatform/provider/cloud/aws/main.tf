@@ -12,7 +12,7 @@ resource "nullplatform_provider_config" "aws" {
       region = var.region
     }
     networking = {
-      application_domain    = true
+      application_domain    = false
       domain_name           = var.domain_name
       hosted_zone_id        = var.hosted_zone_id
       hosted_public_zone_id = var.hosted_public_zone_id

@@ -19,9 +19,9 @@ configuration:
     VAULT_TOKEN: "${vault_token}"
     VAULT_URL: "${vault_url}"
 initScripts:
-  - apk add --no-cache curl ca-certificates bash openssl aws-cli gettext gomplate jq yq go
+  - apk add --no-cache aws-cli
 %{ for script in init_scripts ~}
   - ${script}
 %{ endfor ~}
 image:
-  tag: gamma
+  tag: aws
