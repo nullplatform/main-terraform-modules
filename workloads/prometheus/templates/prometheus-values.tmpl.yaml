@@ -12,11 +12,11 @@ extraScrapeConfigs: |
     metrics_path: /metrics
     scheme: http
     relabel_configs:
-      # Cambiar puerto de kubelet (10250) a null-platform (2021)
+      #  Change kubelet port (10250) to null-platform  (2021)
       - source_labels: [ __address__ ]
         regex: '(.*):10250'
         target_label: __address__
-        replacement: '$1:2021'
+        replacement: '$1:${nullplatform_port}'
       # Mapear labels de nodos K8s
       - action: labelmap
         regex: __meta_kubernetes_node_label_(.+)
