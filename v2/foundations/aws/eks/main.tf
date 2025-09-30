@@ -22,13 +22,13 @@ module "eks" {
   # Optional: Adds the current caller identity as an administrator via cluster access entry
   enable_cluster_creator_admin_permissions = true
 
-  vpc_id                   = data.aws_vpc.vpc.id
-  subnet_ids               = data.aws_subnets.private.ids
-  control_plane_subnet_ids = data.aws_subnets.private.ids
+  vpc_id                   = var.aws_vpc_vpc_id
+  subnet_ids               = var.aws_subnets_private_ids
+  control_plane_subnet_ids = var.aws_subnets_private_ids
 
   # EKS Managed Node Group(s)
   eks_managed_node_groups = {
-    example = {
+    nullplatform = {
       # Starting on 1.30, AL2023 is the default AMI type for EKS managed node groups
       ami_type       = var.ami_type
       instance_types = [var.instance_types]

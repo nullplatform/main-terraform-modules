@@ -1,8 +1,3 @@
-variable "vpc_id" {
-  type        = string
-  description = "A account name"
-}
-
 variable "name" {
   type = string
   description = "A name of cluster"
@@ -25,3 +20,6 @@ variable "kubernetes_version" {
   description = "The version of K8s to use"
   default = "1.32"
 }
+
+variable "aws_vpc_vpc_id" {}
+variable "aws_subnets_private_ids" {}
