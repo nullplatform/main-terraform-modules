@@ -5,6 +5,9 @@ module "eks" {
   name               = var.name
   kubernetes_version = var.kubernetes_version
 
+    cluster_enabled_log_types = []  # desactiva todos: api, audit, authenticator, controllerManager, scheduler
+    create_cloudwatch_log_group = false  # opcional: que el módulo no gestione el log group
+
   addons = {
     coredns                = {}
     eks-pod-identity-agent = {
