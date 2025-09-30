@@ -1,0 +1,58 @@
+
+provider:
+  name: cloudflare
+sources:
+  - service
+  - ingress
+  - crd
+
+policy: upsert-only  
+registry: txt
+txtOwnerId: "external-dns"
+txtPrefix: "externaldns-"
+
+
+
+domainFilters:
+  - nullimplementation.com
+
+interval: 10s  # Check every 10 seconds for faster DNS updates
+
+rbac:
+  create: true
+
+serviceAccount:
+  create: true
+  name: external-dns
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 50m
+    memory: 64Mi
+
+securityContext:
+  runAsNonRoot: true
+  runAsUser: 65532
+  runAsGroup: 65532
+  readOnlyRootFilesystem: true
+  capabilities:
+    drop:
+      - ALL
+
+podSecurityContext:
+  fsGroup: 65534
+  runAsNonRoot: true
+
+env:
+  - name: CF_API_TOKEN
+    valueFrom:
+      secretKeyRef:
+        name: external-dns-cloudflare
+        key: api-token
+# Flags extra útiles para Cloudflare
+extraArgs:
+  - --cloudflare-proxied                # activa "nube naranja" por defecto
+  - --cloudflare-dns-records-per-page=200

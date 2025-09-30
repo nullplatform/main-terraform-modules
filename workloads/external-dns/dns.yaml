@@ -1,0 +1,22 @@
+apiVersion: externaldns.k8s.io/v1alpha1
+kind: DNSEndpoint
+metadata:
+  name: k-8-s-custom-scope-1668577173-dns
+  namespace: default
+  labels:
+    nullplatform: "true"
+    account: kwik-e-mart-main
+    account_id: "95118862"
+    namespace: kubernets
+    namespace_id: "965608594"
+    application: external-dns
+    application_id: "1038560634"
+    scope: custom-scope
+    scope_id: "1668577173"
+spec:
+  endpoints:
+  - dnsName: david.nullimplementation.com
+    recordTTL: 300
+    recordType: A
+    targets:
+    - "34.86.164.237"
