@@ -26,20 +26,7 @@ variable "dimensions" {
   type        = map(string)
   default     = {}
 }
-/*
-#######
-# Code respositoy
-####3
-variable "organization" {
-  description = "Organization name for code repository configuration"
-  type        = string
-}
 
-variable "organization_installation_id" {
-  description = "GitHub App installation ID for the organization"
-  type        = string
-}
-*/
 
 variable "environments" {
   type        = list(string)
@@ -65,12 +52,15 @@ variable "np_api_key" {
 
 variable "private_dns_zone_name" {
   type = string
+  default = ""
 
 }
 variable "public_dns_zone_name" {
   type = string
+  default = ""
 }
 variable "service_account_key" {
   type = string
+  default = ""
 
 }
