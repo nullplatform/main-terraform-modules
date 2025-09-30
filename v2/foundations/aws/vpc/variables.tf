@@ -14,7 +14,7 @@ variable "organization" {
   description = "A organization name"
 }
 
-variable "environment" {
+variable "account" {
   type        = string
-  description = "The environment name"
+  description = "The account name"
 }
