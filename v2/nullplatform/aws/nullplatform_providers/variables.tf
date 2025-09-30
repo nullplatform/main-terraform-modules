@@ -83,5 +83,5 @@ variable "np_api_key" {
 
 variable "namespaces" {
   type    = list(string)
-  default = ["nullplatform", "nullplatform-tools"]
+  default = ["nullplatform"]
 }
