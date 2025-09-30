@@ -26,7 +26,7 @@ variable "nrn" {
 
 variable "collaborators_config" {
   type = object({
-    default_collaborators = list(object({
+    collaborators = list(object({
       id   = string
       role = string
       type = string
