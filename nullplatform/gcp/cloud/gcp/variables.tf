@@ -16,10 +16,7 @@ variable "domain_name" {
 }
 
 
-variable "environment" {
-  description = "Environment dimension value to which the configuration applies"
-  type        = string
-}
+
 
 variable "dimensions" {
   description = "Map of dimension values to configure Nullplatform"
