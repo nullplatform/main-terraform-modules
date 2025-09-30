@@ -112,3 +112,5 @@ variable "external_logging_provider" {
   default     = "external"
   description = "External logging provider name"
 }
+
+variable "aws_iam_openid_connect_provider_arn" {}
