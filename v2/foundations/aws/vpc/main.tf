@@ -3,7 +3,7 @@ module "vpc" {
   version = "~> 6.0"
 
   name = "${var.organization}-${var.account}"
-  cidr = var.vpc.cidr
+  cidr = var.vpc.cidr_block
 
   enable_dns_hostnames = true
 
