@@ -80,3 +80,8 @@ variable "np_api_key" {
   sensitive   = true
   description = "Nullplatform API key for authentication"
 }
+
+variable "namespaces" {
+  type    = list(string)
+  default = ["nullplatform", "nullplatform-tools"]
+}
