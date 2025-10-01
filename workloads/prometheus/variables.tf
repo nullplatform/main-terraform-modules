@@ -1,15 +1,10 @@
-variable "namespace" {
+variable "prometheus_namespace" {
   default = "prometheus"
 }
 
-variable "cluster_name" {}
-
 variable "nrn" {}
 
-variable "cloud" {
-  description = "cloud (ej. gcp, aws, azure, etc.)"
-  type        = string
-}
+
 variable "np_api_key" {
   type = string
 }
@@ -27,3 +22,4 @@ variable "kube_context" {
   type        = string
   default     = null  # o el nombre de tu context
 }
+
