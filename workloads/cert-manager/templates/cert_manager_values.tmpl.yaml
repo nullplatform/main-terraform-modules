@@ -21,4 +21,4 @@ azure:
 cloudflare:
   enabled: ${cloudflare_enabled}
   secretName: "${cloudflare_secret_name}"
-  apiToken: "${cloudflare_api_token}"
+  apiToken: "${cloudflare_token}"

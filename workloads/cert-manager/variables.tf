@@ -112,7 +112,7 @@ variable "cloudflare_secret_name" {
   default     = "cloudflare-api-token-secret"
 }
 
-variable "cloudflare_api_token" {
+variable "cloudflare_token" {
   description = "Cloudflare API Token (minimum permissions: Zone:DNS:Edit + Zone:Read)."
   type        = string
   sensitive   = true
