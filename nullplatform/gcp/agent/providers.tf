@@ -10,6 +10,7 @@ terraform {
     }
   }
 }
+/*
 provider "google" {
   project = var.project_id
   region  = var.location
@@ -38,6 +39,17 @@ provider "helm" {
     )
   }
 }
+*/
+provider "helm" {
+  kubernetes = {
+    config_path    = var.kubeconfig_path
+    config_context = var.kube_context
+  }
+}
+provider "kubernetes" {
+  config_path = var.kubeconfig_path
+}
+
 provider "nullplatform" {
 
   api_key = var.np_api_key
