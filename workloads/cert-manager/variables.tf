@@ -118,7 +118,7 @@ variable "cloudflare_token" {
   sensitive   = true
   default     = ""
   validation {
-    condition     = !var.cloudflare_enabled || length(var.cloudflare_api_token) > 0
+    condition     = !var.cloudflare_enabled || length(var.cloudflare_token) > 0
     error_message = "When cloudflare_enabled is true, cloudflare_api_token must not be empty."
   }
 }
