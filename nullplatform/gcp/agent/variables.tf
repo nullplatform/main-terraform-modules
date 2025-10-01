@@ -124,3 +124,12 @@ variable "location" {
 variable "environment_tag" {
 
 }
+
+variable "kubeconfig_path" {
+  type    = string
+  default = "~/.kube/config"
+}
+variable "kube_context" {
+  type    = string
+  default = null # o el nombre de tu context
+}
