@@ -14,7 +14,7 @@ resource "helm_release" "cert_manager" {
 }
 
 
-resource "helm_release" "cert_manager-config" {
+resource "helm_release" "cert_manager_config" {
   name             = "cert-manager-config"
   repository       = "https://nullplatform.github.io/helm-charts"
   chart            = "nullplatform-cert-manager-config"
