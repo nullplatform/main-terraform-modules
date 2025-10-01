@@ -7,7 +7,7 @@ variable "nullplatform-agent-helm-version" {
 variable "agent_repos_scope" {
   description = "Git repository URL for agent scopes configuration"
   type        = string
-  default     = "https://github.com/nullplatform/scopes.git#main"
+  default     = "https://github.com/nullplatform/scopes.git#beta"
 }
 
 variable "agent_repos_extra" {
