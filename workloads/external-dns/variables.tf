@@ -17,7 +17,7 @@ variable "txt_owner_id" {
 
 }
 
-variable "clodflare_token" {
+variable "cloudflare_token" {
   type      = string
   sensitive = true
 

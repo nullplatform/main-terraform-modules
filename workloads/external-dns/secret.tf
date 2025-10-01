@@ -10,7 +10,7 @@ resource "kubernetes_secret_v1" "external_dns_cloudflare" {
 
 
   data = {
-    "api-token" = var.clodflare_token
+    "api-token" = var.cloudflare_token
   }
 }
 
