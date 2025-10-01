@@ -65,5 +65,4 @@ variable "organization_installation_id" {
     type = string
     default = ""
     
-  
 }

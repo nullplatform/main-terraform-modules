@@ -20,14 +20,13 @@ variable "np_api_key" {
   sensitive   = true
   description = "Nullplatform API key for authentication"
 }
-variable "cluster_name" {
-  type = string
 
-}
-variable "location" {
-  type = string
-}
 
-variable "project_id" {
-  type = string
+variable "kubeconfig_path" {
+  type    = string
+  default = "~/.kube/config"
+}
+variable "kube_context" {
+  type    = string
+  default = null # o el nombre de tu context
 }
