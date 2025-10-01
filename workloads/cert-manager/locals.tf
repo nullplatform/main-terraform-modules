@@ -20,6 +20,6 @@ locals {
     # Cloudflare
     cloudflare_enabled     = var.cloudflare_enabled
     cloudflare_secret_name = var.cloudflare_secret_name
-    cloudflare_api_token   = var.cloudflare_token
+    cloudflare_token   = var.cloudflare_token
   })
 }
