@@ -10,7 +10,7 @@ logging:
   enabled: true
   prometheus:
     enabled: true
-    exporterPort: 302021
+    exporterPort: 30021
 metricsServer:
   enabled: false
 controlPlane:
