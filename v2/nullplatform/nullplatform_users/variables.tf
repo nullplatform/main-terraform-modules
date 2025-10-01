@@ -3,6 +3,7 @@ variable "nullplatform_users" {
     email               = string
     first_name  = string
     last_name = string
+    organization_id = string
   }))
 }
 
