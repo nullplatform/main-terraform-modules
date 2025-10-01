@@ -13,7 +13,7 @@ resource "nullplatform_provider_config" "prometheus" {
   type = "prometheus"
   attributes = jsonencode({
     "server" : {
-      "url" : "http://prometheus-server.${var.namespace}.svc.cluster.local:80"
+      "url" : "http://prometheus-server.${var.prometheus_namespace}.svc.cluster.local:80"
     }
   })
   dimensions = {}
