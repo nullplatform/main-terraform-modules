@@ -10,7 +10,7 @@ logging:
   enabled: true
   prometheus:
     enabled: true
-    exporterPort: 2025
+    exporterPort: 2021
 metricsServer:
   enabled: false
 controlPlane:
