@@ -60,7 +60,7 @@ serverFiles:
         metrics_path: /metrics
         relabel_configs:
           - regex: (.*):10250
-            replacement: ${1}:2021
+            replacement: $1:2021
             source_labels:
               - __address__
             target_label: __address__
