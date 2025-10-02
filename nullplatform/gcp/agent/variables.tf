@@ -1,7 +1,7 @@
 variable "nullplatform-agent-helm-version" {
   description = "Helm chart version for the Nullplatform agent"
   type        = string
-  default     = "2.11.0"
+  default     = "2.14.0"
 }
 
 variable "agent_repos_scope" {
@@ -64,7 +64,7 @@ variable "github_repo_url" {
 
 variable "github_ref" {
   type        = string
-  default     = "beta"
+  default     = "ftc"
   description = "Git reference (branch, tag, or commit)"
 }
 
