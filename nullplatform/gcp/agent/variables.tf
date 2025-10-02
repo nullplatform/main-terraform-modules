@@ -113,13 +113,7 @@ variable "external_logging_provider" {
   description = "External logging provider name"
 }
 
-variable "project_id" {
-  type = string
 
-}
-variable "location" {
-  type = string
-}
 
 variable "environment_tag" {
 
