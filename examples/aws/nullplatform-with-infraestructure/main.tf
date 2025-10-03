@@ -2,7 +2,7 @@
 # VPC Config
 ################################################################################
 module "foundations_vpc" {
-  source       = "git::https://github.com/nullplatform/main-terraform-modules.git//v2/foundations/aws/vpc?ref=chore/IaC-v2"
+  source       = "git::https://github.com/nullplatform/main-terraform-modules.git//v2/foundations/aws/vpc?ref=v2"
   account      = var.account
   organization = var.organization
   vpc          = var.vpc
@@ -12,7 +12,7 @@ module "foundations_vpc" {
 # Route53 Config
 ################################################################################
 module "foundations_route53" {
-  source = "git::https://github.com/nullplatform/main-terraform-modules.git//v2/foundations/aws/route53?ref=chore/IaC-v2"
+  source = "git::https://github.com/nullplatform/main-terraform-modules.git//v2/foundations/aws/route53?ref=v2"
 
   domain_name = var.domain_name
   vpc_id      = module.foundations_vpc.vpc_id
@@ -22,7 +22,7 @@ module "foundations_route53" {
 # EKS Config
 ################################################################################
 module "foundations_eks" {
-  source = "git::https://github.com/nullplatform/main-terraform-modules.git//v2/foundations/aws/eks?ref=chore/IaC-v2"
+  source = "git::https://github.com/nullplatform/main-terraform-modules.git//v2/foundations/aws/eks?ref=v2"
 
   name                    = var.eks_cluster_name
   aws_subnets_private_ids = module.foundations_vpc.private_subnets
@@ -33,7 +33,7 @@ module "foundations_eks" {
 # ALB-Controller Config
 ################################################################################
 module "foundations_alb_controller" {
-  source = "git::https://github.com/nullplatform/main-terraform-modules.git//v2/foundations/aws/alb-controller?ref=chore/IaC-v2"
+  source = "git::https://github.com/nullplatform/main-terraform-modules.git//v2/foundations/aws/alb-controller?ref=v2"
 
   cluster_name = module.foundations_eks.eks_cluster_name
   vpc_id       = module.foundations_vpc.vpc_id
@@ -47,7 +47,7 @@ module "foundations_alb_controller" {
 # Platform Config
 ################################################################################
 module "nullplatform_configuration" {
-  source = "git::https://github.com/nullplatform/main-terraform-modules.git//v2/nullplatform/aws/nullplatform_providers?ref=chore/IaC-v2"
+  source = "git::https://github.com/nullplatform/main-terraform-modules.git//v2/nullplatform/aws/nullplatform_providers?ref=v2"
 
   domain_name                  = var.domain_name
   environment                  = var.environment
@@ -65,7 +65,7 @@ module "nullplatform_configuration" {
 # Users Config
 ################################################################################
 module "nullplatform_user" {
-  source             = "git::https://github.com/nullplatform/main-terraform-modules.git//v2/nullplatform/nullplatform_users?ref=chore/IaC-v2"
+  source             = "git::https://github.com/nullplatform/main-terraform-modules.git//v2/nullplatform/nullplatform_users?ref=v2"
   np_api_key         = var.api_key
   nullplatform_users = var.nullplatform_users
 }
@@ -74,7 +74,7 @@ module "nullplatform_user" {
 # Acount Config
 ################################################################################
 module "nullplatform_account" {
-  source                = "git::https://github.com/nullplatform/main-terraform-modules.git//v2/nullplatform/nullplatform_account?ref=chore/IaC-v2"
+  source                = "git::https://github.com/nullplatform/main-terraform-modules.git//v2/nullplatform/nullplatform_account?ref=v2"
   np_api_key            = var.api_key
   nullplatform_accounts = var.nullplatform_accounts
 }
@@ -85,7 +85,7 @@ module "nullplatform_account" {
 ################################################################################
 
 module "nullplatform_agent" {
-  source                              = "git::https://github.com/nullplatform/main-terraform-modules.git//v2/nullplatform/aws/nullplatform_agent?ref=chore/IaC-v2"
+  source                              = "git::https://github.com/nullplatform/main-terraform-modules.git//v2/nullplatform/aws/nullplatform_agent?ref=v2"
   cluster_name                        = module.foundations_eks.eks_cluster_name
   tags                                = var.tags
   nrn                                 = var.nrn
@@ -100,7 +100,7 @@ module "nullplatform_agent" {
 ################################################################################
 
 module "nullplatform_base_chart" {
-  source = "git::https://github.com/nullplatform/main-terraform-modules.git//v2/nullplatform/nullplatform_base?ref=chore/IaC-v2"
+  source = "git::https://github.com/nullplatform/main-terraform-modules.git//v2/nullplatform/nullplatform_base?ref=v2"
   nrn    = var.nrn
 
   depends_on = [module.foundations_eks]
@@ -111,7 +111,7 @@ module "nullplatform_base_chart" {
 ################################################################################
 
 module "nullplatform_prometheus" {
-  source       = "git::https://github.com/nullplatform/main-terraform-modules.git//v2/workload/prometheus?ref=chore/IaC-v2"
+  source       = "git::https://github.com/nullplatform/main-terraform-modules.git//v2/workload/prometheus?ref=v2"
   cluster_name = module.foundations_eks.eks_cluster_name
   nrn          = var.nrn
 }
