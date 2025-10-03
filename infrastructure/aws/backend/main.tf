@@ -2,11 +2,6 @@ data "aws_vpc" "vpc" {
   id = var.vpc_id
 }
 
-
-provider "aws" {
-  region = data.aws_vpc.vpc.region
-}
-
 resource "random_id" "bucket_suffix" {
   byte_length = 8
 }
