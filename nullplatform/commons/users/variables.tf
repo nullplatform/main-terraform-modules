@@ -3,8 +3,8 @@ variable "nullplatform_users" {
     email      = string
     first_name = string
     last_name  = string
-    role_slug = list(string)
-    nrn = string
+    role_slug  = list(string)
+    nrn        = string
   }))
 }
 
