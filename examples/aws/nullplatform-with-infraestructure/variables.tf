@@ -102,17 +102,17 @@ variable "environment_tags" {
 
 variable "nullplatform_users" {
   type = map(object({
-    email               = string
-    first_name  = string
-    last_name = string
+    email      = string
+    first_name = string
+    last_name  = string
   }))
 }
 
 variable "nullplatform_accounts" {
   type = map(object({
-    name               = string
-    repository_prefix  = string
+    name                = string
+    repository_prefix   = string
     repository_provider = string
-    slug               = string
+    slug                = string
   }))
 }

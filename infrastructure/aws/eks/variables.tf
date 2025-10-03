@@ -1,24 +1,24 @@
 variable "name" {
-  type = string
+  type        = string
   description = "A name of cluster"
 }
 
 variable "ami_type" {
-  type = string
+  type        = string
   description = "The ami type to use with node"
-  default = "AL2023_x86_64_STANDARD"
+  default     = "AL2023_x86_64_STANDARD"
 }
 
 variable "instance_types" {
-  type = string
+  type        = string
   description = "The instance type to use"
-  default = "t3.medium"
+  default     = "t3.medium"
 }
 
 variable "kubernetes_version" {
-  type = string
+  type        = string
   description = "The version of K8s to use"
-  default = "1.32"
+  default     = "1.32"
 }
 
 variable "aws_vpc_vpc_id" {}

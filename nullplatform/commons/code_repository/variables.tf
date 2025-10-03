@@ -1,27 +1,27 @@
 variable "group_path" {
-    type = string
-  
+  type = string
+
 }
 
 variable "access_token" {
-    type = string
-    sensitive = true
-  
+  type      = string
+  sensitive = true
+
 }
 
 variable "installation_url" {
-    type = string
-  
+  type = string
+
 }
 
 variable "np_api_key" {
-    type = string
-    sensitive = true
-  
+  type      = string
+  sensitive = true
+
 }
 variable "nrn" {
-    type = string
-  
+  type = string
+
 }
 
 variable "collaborators_config" {
@@ -35,34 +35,34 @@ variable "collaborators_config" {
 }
 
 variable "gitlab_repository_prefix" {
-    type = string
-  
+  type = string
+
 }
 variable "gitlab_name" {
-    type = string
-  
+  type = string
+
 }
 
 variable "repository_provider" {
-    type = string
-  
+  type = string
+
 }
 variable "gitlab_slug" {
-    type = string
-  
+  type = string
+
 }
 
 variable "git_provider" {
-  type    = string
+  type        = string
   description = "gitlab or github"
 }
 variable "organization" {
-    type = string
-    default = ""
-  
+  type    = string
+  default = ""
+
 }
 variable "organization_installation_id" {
-    type = string
-    default = ""
-    
+  type    = string
+  default = ""
+
 }

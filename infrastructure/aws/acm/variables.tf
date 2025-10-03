@@ -10,5 +10,5 @@ variable "domain_name" {
 variable "subject_alternative_names" {
   type        = list(string)
   description = "Alternative DNS to add"
-  default = []
+  default     = []
 }

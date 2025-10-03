@@ -5,7 +5,7 @@ resource "helm_release" "istio_base" {
   chart            = "base"
   namespace        = local.namespace
   create_namespace = true
-  version          = var.istio_base_version 
+  version          = var.istio_base_version
 }
 
 resource "helm_release" "istiod" {
@@ -14,7 +14,7 @@ resource "helm_release" "istiod" {
   repository = local.repository
   chart      = "istiod"
   namespace  = local.namespace
-  version    = var.istiod_version 
+  version    = var.istiod_version
 }
 
 # Setup Istio Gateway using Helm
@@ -24,6 +24,6 @@ resource "helm_release" "istio_ingressgateway" {
   repository = local.repository
   chart      = "gateway"
   namespace  = local.namespace
-  version    = var.istio_ingressgateway_version 
+  version    = var.istio_ingressgateway_version
 
 }

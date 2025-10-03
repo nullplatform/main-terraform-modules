@@ -1,7 +1,7 @@
 locals {
-  scope_list        = compact([trimspace(coalesce(var.agent_repos_scope, ""))])
-  repos_extra       = compact([for s in split(",", try(coalesce(var.agent_repos_extra, ""), "")) : trimspace(s)])
-  final_list        = distinct(concat(local.scope_list, local.repos_extra))
+  scope_list            = compact([trimspace(coalesce(var.agent_repos_scope, ""))])
+  repos_extra           = compact([for s in split(",", try(coalesce(var.agent_repos_extra, ""), "")) : trimspace(s)])
+  final_list            = distinct(concat(local.scope_list, local.repos_extra))
   nrn_without_namespace = join(":", slice(split(":", var.nrn), 0, 2))
 
   nullplatform_agent_values = templatefile("${path.module}/templates/nullplatform-agent-values.tmpl.yaml", {

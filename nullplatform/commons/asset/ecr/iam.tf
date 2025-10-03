@@ -74,11 +74,11 @@ resource "aws_iam_policy" "nullplatform_ecr_manager_policy" {
 }
 
 resource "aws_iam_user" "nullplatform_build_workflow_user" {
-  name     = "nullplatform-build-workflow-user"
+  name = "nullplatform-build-workflow-user"
 }
 
 resource "aws_iam_access_key" "nullplatform_build_workflow_user_key" {
-  user     = aws_iam_user.nullplatform_build_workflow_user.name
+  user = aws_iam_user.nullplatform_build_workflow_user.name
 }
 
 

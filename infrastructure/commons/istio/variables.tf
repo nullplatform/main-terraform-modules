@@ -1,19 +1,19 @@
 variable "istio_base_version" {
-    type = string
-    default = "1.27.1"
-  
+  type    = string
+  default = "1.27.1"
+
 }
 
 variable "istio_ingressgateway_version" {
-    type = string
-    default = "1.27.1"
-  
+  type    = string
+  default = "1.27.1"
+
 }
 
 variable "istiod_version" {
-    type = string
-    default = "1.27.1"
-  
+  type    = string
+  default = "1.27.1"
+
 }
 
 variable "kubeconfig_path" {

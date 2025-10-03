@@ -48,16 +48,16 @@ variable "np_api_key" {
 }
 
 variable "private_dns_zone_name" {
-  type = string
+  type    = string
   default = ""
 
 }
 variable "public_dns_zone_name" {
-  type = string
+  type    = string
   default = ""
 }
 variable "service_account_key" {
-  type = string
+  type    = string
   default = ""
 
 }

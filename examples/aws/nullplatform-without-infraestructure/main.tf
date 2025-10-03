@@ -19,8 +19,8 @@ module "nullplatform_configuration" {
 # Users Config
 ################################################################################
 module "nullplatform_user" {
-  source = "git::https://github.com/nullplatform/main-terraform-modules.git//v2/nullplatform/nullplatform_users?ref=chore/IaC-v2"
-  np_api_key = var.api_key
+  source             = "git::https://github.com/nullplatform/main-terraform-modules.git//v2/nullplatform/nullplatform_users?ref=chore/IaC-v2"
+  np_api_key         = var.api_key
   nullplatform_users = var.nullplatform_users
 }
 
@@ -28,8 +28,8 @@ module "nullplatform_user" {
 # Acount Config
 ################################################################################
 module "nullplatform_account" {
-  source = "git::https://github.com/nullplatform/main-terraform-modules.git//v2/nullplatform/nullplatform_account?ref=chore/IaC-v2"
-  np_api_key = var.api_key
+  source                = "git::https://github.com/nullplatform/main-terraform-modules.git//v2/nullplatform/nullplatform_account?ref=chore/IaC-v2"
+  np_api_key            = var.api_key
   nullplatform_accounts = var.nullplatform_accounts
 }
 

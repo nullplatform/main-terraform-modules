@@ -10,10 +10,10 @@ resource "nullplatform_provider_config" "gitlab" {
       "access_token" : var.access_token,
       "installation_url" : var.installation_url
     },
-    "access": var.collaborators_config 
-  }
+    "access" : var.collaborators_config
+    }
   )
-  
+
 }
 /* If the git_provider variable is set to gitlab, create this resource. 
 resource "nullplatform_account" "gitlab_account" {
@@ -35,6 +35,6 @@ resource "nullplatform_provider_config" "github" {
       "organization" : var.organization,
       "installation_id" : var.organization_installation_id
     },
-  }
+    }
   )
 }

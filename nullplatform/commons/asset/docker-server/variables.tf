@@ -26,6 +26,6 @@ variable "password" {
 }
 
 variable "np_api_key" {
-    type = string
-  
+  type = string
+
 }

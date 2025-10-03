@@ -5,7 +5,7 @@ resource "helm_release" "prometheus" {
   namespace        = var.prometheus_namespace
   create_namespace = true
 
-  values = [ local.prometheus_values ]
+  values = [local.prometheus_values]
 }
 
 resource "nullplatform_provider_config" "prometheus" {

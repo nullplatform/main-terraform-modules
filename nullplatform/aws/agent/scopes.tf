@@ -40,8 +40,8 @@ resource "nullplatform_service_specification" "from_template" {
   name                = local.service_spec_parsed.name
   visible_to          = local.service_spec_parsed.visible_to
   assignable_to       = local.service_spec_parsed.assignable_to
-  type               = local.service_spec_parsed.type
-  attributes         = jsonencode(local.service_spec_parsed.attributes)
+  type                = local.service_spec_parsed.type
+  attributes          = jsonencode(local.service_spec_parsed.attributes)
   use_default_actions = local.service_spec_parsed.use_default_actions
 
   selectors {

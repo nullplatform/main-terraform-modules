@@ -1,9 +1,9 @@
-resource "helm_release" "agent" {
-  name             = "nullplatform-agent"
-  chart            = "nullplatform-agent"
+resource "helm_release" "base" {
+  name             = "nullplatform-base"
+  chart            = "nullplatform-base"
   repository       = "https://nullplatform.github.io/helm-charts"
   namespace        = var.namespace
-  version          = var.nullplatform-agent-helm-version
+  version          = var.nullplatform-base-helm-version
   create_namespace = true
 
   disable_webhooks  = true
@@ -20,5 +20,5 @@ resource "helm_release" "agent" {
   dependency_update = true
   max_history       = 10
 
-  values = [local.nullplatform_agent_values]
+  values = [local.nullplatform_base_values]
 }

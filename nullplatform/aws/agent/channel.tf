@@ -47,10 +47,10 @@ resource "nullplatform_notification_channel" "from_template" {
           data = {
             for k, v in agent.value.command.data : k => (
               k == "environment" ? jsonencode({
-              NP_ACTION_CONTEXT = "'$${NOTIFICATION_CONTEXT}'"
-            }) : (
-              can(tostring(v)) ? tostring(v) : jsonencode(v)
-            )
+                NP_ACTION_CONTEXT = "'$${NOTIFICATION_CONTEXT}'"
+                }) : (
+                can(tostring(v)) ? tostring(v) : jsonencode(v)
+              )
             )
           }
         }
