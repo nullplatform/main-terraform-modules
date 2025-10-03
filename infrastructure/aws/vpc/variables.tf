@@ -1,20 +1,19 @@
 variable "vpc" {
-  description = "A VPC with public and private subnets"
+  description = "Configuración de la VPC"
+  type = object({
+    cidr_block      = string
+    azs             = list(string)
+    private_subnets = list(string)
+    public_subnets  = list(string)
+  })
 }
-# Parámetros VPC
-# vpc = {
-#   azs             = ["us-west-2a", "us-west-2b", "us-west-2c"]
-#   cidr            = "172.16.0.0/16"
-#   public_subnets  = ["172.16.1.0/24", "172.16.2.0/24", "172.16.3.0/24"]
-#   private_subnets = ["172.16.10.0/24", "172.16.11.0/24", "172.16.12.0/24"]
-# }
 
 variable "organization" {
   type        = string
   description = "A organization name"
 }
 
-variable "environment" {
+variable "account" {
   type        = string
-  description = "The environment name"
+  description = "The account name"
 }

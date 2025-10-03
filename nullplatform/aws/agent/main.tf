@@ -1,9 +1,10 @@
-resource "helm_release" "aws-load-balancer-controller" {
-  name       = "aws-load-balancer-controller"
-  repository = "https://aws.github.io/eks-charts"
-  chart      = "aws-load-balancer-controller"
-  version    = var.aws-load-balancer-controller-version
-  namespace  = "kube-system"
+resource "helm_release" "agent" {
+  name             = "nullplatform-agent"
+  chart            = "nullplatform-agent"
+  repository       = "https://nullplatform.github.io/helm-charts"
+  namespace        = var.namespace
+  version          = var.nullplatform-agent-helm-version
+  create_namespace = true
 
   disable_webhooks  = true
   force_update      = true
@@ -19,6 +20,5 @@ resource "helm_release" "aws-load-balancer-controller" {
   dependency_update = true
   max_history       = 10
 
-
-  values = [local.aws-load-balancer-controller-values]
+  values = [local.nullplatform_agent_values]
 }

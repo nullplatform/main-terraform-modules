@@ -1,3 +1,0 @@
-locals {
-  description = "Nullplatform delegation"
-}

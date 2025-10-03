@@ -13,3 +13,7 @@ variable "aws-load-balancer-controller-version" {
   type        = string
   default     = "1.13.4"
 }
+
+variable "aws_iam_openid_connect_provider" {
+
+}

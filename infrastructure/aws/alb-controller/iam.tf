@@ -1,11 +1,12 @@
 module "aws-load-balancer-controller-role" {
   source                                 = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts"
+  version                                = "~> 6.0"
   name                                   = "AWSLoadBalancerControllerIAMRole"
   attach_load_balancer_controller_policy = true
-  use_name_prefix =  false
+  use_name_prefix                        = false
   oidc_providers = {
     main = {
-      provider_arn               = data.aws_iam_openid_connect_provider.this.arn
+      provider_arn               = var.aws_iam_openid_connect_provider
       namespace_service_accounts = ["kube-system:aws-load-balancer-controller"]
     }
   }
