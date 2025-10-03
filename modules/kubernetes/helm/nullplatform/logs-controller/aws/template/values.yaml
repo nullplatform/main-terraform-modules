@@ -1,7 +1,0 @@
-global:
-  provider: eks
-  awsRegion: ${region}
-tls:
-  secretName: ${tls_secret_name}
-cloudwatch:
-  enabled: ${cloudwatch_enabled}
