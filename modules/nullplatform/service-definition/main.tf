@@ -3,24 +3,27 @@
 # Step 1: Fetch Templates
 ################################################################################
 
-locals {
- git_login = var.git_user != null && var.git_password !=null ? "${var.git_user}:${var.git_password}@" : var.git_user != null ? "${var.git_user}@" : ""
- full_git_repo_url = var.git_provider == "github" ? "https://${local.git_login}raw.githubusercontent.com/${var.git_repo}/refs/heads/${var.git_ref}" : null
-}
-
 # Fetch service specification template
-data "http" "service_spec_template" {
-  url = "${local.full_git_repo_url}/${var.git_service_path}/specs/service-spec.json${var.use_tpl_files ? ".tpl" : ""}"
-}
-# Fetch action specification templates
-data "http" "action_templates" {
-  for_each = toset(local.available_actions)
-  url      = "${local.full_git_repo_url}/${var.git_service_path}/specs/actions/${each.key}.json${var.use_tpl_files ? ".tpl" : ""}"
+data "github_repository_file" "service_spec_template" {
+  repository = var.git_repo
+  branch     = var.git_ref
+  file       = "${var.git_service_path}/specs/service-spec.json${var.use_tpl_files ? ".tpl" : ""}"
 }
 
-data "http" "link_templates" {
-  for_each = toset(local.available_links)
-  url      = "${local.full_git_repo_url}/${var.git_service_path}/specs/links/${each.key}.json${var.use_tpl_files ? ".tpl" : ""}"
+# Fetch action specification templates
+data "github_repository_file" "action_templates" {
+  for_each   = toset(local.available_actions)
+  repository = var.git_repo
+  branch     = var.git_ref
+  file       = "${var.git_service_path}/specs/actions/${each.key}.json${var.use_tpl_files ? ".tpl" : ""}"
+}
+
+# Fetch link specification templates
+data "github_repository_file" "link_templates" {
+  for_each   = toset(local.available_links)
+  repository = var.git_repo
+  branch     = var.git_ref
+  file       = "${var.git_service_path}/specs/links/${each.key}.json${var.use_tpl_files ? ".tpl" : ""}"
 }
 
 
@@ -32,15 +35,15 @@ locals {
     # Process the template by replacing the template variables
     # replace is done because some old templates contain gomplate placeholders
     service_spec_rendered = var.use_tpl_files ? replace(
-        data.http.service_spec_template.response_body,
+        data.github_repository_file.service_spec_template.content,
         "/\"{{\\s+env.Getenv\\s+\".*\"\\s+}}\"/",
         "\"${var.nrn}\""
-    ) : data.http.service_spec_template.response_body
+    ) : data.github_repository_file.service_spec_template.content
     service_spec_parsed = jsondecode(local.service_spec_rendered)
     available_actions = try(local.service_spec_parsed.available_actions, [])
     available_links = try(local.service_spec_parsed.available_links, [])
     visible_to_nrns = concat([var.nrn], var.extra_visibile_to_nrns)
-  
+
 }
 
 # Create service specification
@@ -79,10 +82,10 @@ locals {
   action_specs_parsed = {
     for name in local.available_actions :
     name => jsondecode(var.use_tpl_files ? replace(
-        data.http.action_templates[name].response_body,
+        data.github_repository_file.action_templates[name].content,
         "/\"{{\\s+env.Getenv\\s+\".*\"\\s+}}\"/",
         "\"\""
-    ) : data.http.action_templates[name].response_body)
+    ) : data.github_repository_file.action_templates[name].content)
   }
 }
 
@@ -104,10 +107,10 @@ locals {
   link_specs_parsed = {
     for name in local.available_links :
     name => jsondecode(var.use_tpl_files ? replace(
-        data.http.link_templates[name].response_body,
+        data.github_repository_file.link_templates[name].content,
         "/\"{{\\s+env.Getenv\\s+\".*\"\\s+}}\"/",
         "\"\""
-    ) : data.http.link_templates[name].response_body)
+    ) : data.github_repository_file.link_templates[name].content)
   }
 }
 

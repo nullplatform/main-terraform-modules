@@ -3,8 +3,8 @@ terraform {
     nullplatform = {
       source  = "nullplatform/nullplatform"
     }
-    http = {
-      source  = "hashicorp/http"
+    github = {
+      source  = "integrations/github"
     }
     external = {
       source  = "hashicorp/external"
