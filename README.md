@@ -10,6 +10,10 @@
 
 # General
 
+<h2 align="center">
+THIS REPOSITORY IS DEPRECATED, PLEASE USE https://github.com/nullplatform/tofu-modules FOR NEW IMPLEMENTATIONS 
+</h2>
+
 This repository contains an extensive list of modules used and shared by Nullplatform to simplify the configuration of Nullplatform across your ecosystem.
 
 # Generating modules
