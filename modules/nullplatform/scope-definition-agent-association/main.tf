@@ -26,10 +26,5 @@ resource "nullplatform_notification_channel" "channel_from_template" {
     }
   }
 
-  filters = jsonencode({
-    "$or" = [
-      {"service.specification.slug" = {"$eq": local.merged_config.slug }},
-      {"arguments.scope_provider" = {"$eq": local.merged_config.scope_provider_id }}
-    ]
-  })
+  filters = local.filters
 }

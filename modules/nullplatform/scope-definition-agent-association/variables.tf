@@ -68,7 +68,13 @@ variable "scope_provider_id" {
   type        = string
   description = "The ID of the scope provider associated with the scope definition"
   default     = null
-  
+
+}
+
+variable "extra_filters" {
+  type        = any
+  description = "Additional filters to combine with the default ones using an $and clause. When provided, the final filter becomes: $and = [extra_filters, $or[...default filters...]]"
+  default     = null
 }
 
 variable "scope_definition" {
@@ -105,6 +111,17 @@ locals {
     workflow_override_values = var.workflow_override_values
   }
   
+  default_filters = {
+    "$or" = [
+      { "service.specification.slug" = { "$eq" : local.merged_config.slug } },
+      { "arguments.scope_provider" = { "$eq" : local.merged_config.scope_provider_id } }
+    ]
+  }
+
+  filters = var.extra_filters != null ? jsonencode({
+    "$and" = [var.extra_filters, local.default_filters]
+  }) : jsonencode(local.default_filters)
+
   merged_config = merge(
     local.base_config,
     {
