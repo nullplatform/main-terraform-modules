@@ -50,3 +50,13 @@ output "scope_description" {
   value       = var.scope_description
   description = "The name of the scope definition"
 }
+
+output "scope_configuration" {
+  value       = local.scope_configuration
+  description = "Parsed scope configuration from scope-configuration.json.tpl, or null if not fetched"
+}
+
+output "provider_config_id" {
+  value       = var.fetch_scope_configuration ? nullplatform_provider_config.from_scope_configuration[0].id : null
+  description = "The ID of the created provider config, or null if scope configuration was not fetched"
+}
