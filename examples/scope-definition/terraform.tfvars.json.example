@@ -1,0 +1,11 @@
+{
+  "np_api_key": "your-nullplatform-api-key",
+  "nrn": "organization=1234567890:account=987654321",
+  "organization_nrn": "organization=1234567890",
+  "github_repo_url": "https://github.com/nullplatform/scopes-static-files",
+  "github_ref": "main",
+  "github_scope_path": "static-files",
+  "scope_name": "my-scope",
+  "scope_description": "My custom scope type",
+  "create_scope_configuration": false
+}

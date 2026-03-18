@@ -22,7 +22,7 @@ variable "github_ref" {
 variable "github_scope_path" {
   type        = string
   default     = "k8s"
-  description = "Path within the repository for the specific scope (e.g., k8s, ecs)" 
+  description = "Path within the repository for the specific scope (e.g., k8s, ecs)"
 }
 
 variable "scope_name" {
@@ -32,7 +32,7 @@ variable "scope_name" {
 variable "scope_description" {
   type        = string
   description = "Description of the scope type to be created"
-} 
+}
 
 variable "action_spec_names" {
   type = list(string)
@@ -52,6 +52,18 @@ variable "action_spec_names" {
     "kill-instances"
   ]
   description = "List of action specification template names to fetch and create"
+}
+
+variable "organization_nrn" {
+  type        = string
+  description = "Organization NRN used to replace the NRN placeholder in scope-configuration.json.tpl"
+  default     = ""
+}
+
+variable "create_scope_configuration" {
+  type        = bool
+  default     = false
+  description = "Whether to fetch and apply scope-configuration.json.tpl from the template repo. Set to true only if the file exists for this scope."
 }
 
 # NRN Patch Configuration
