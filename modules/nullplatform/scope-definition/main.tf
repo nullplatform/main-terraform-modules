@@ -100,4 +100,5 @@ resource "nullplatform_action_specification" "from_templates" {
   parameters               = jsonencode(local.action_specs_parsed[each.key].parameters)
   results                  = jsonencode(local.action_specs_parsed[each.key].results)
   retryable                = try(local.action_specs_parsed[each.key].retryable, false)
+  annotations              = jsonencode(try(local.action_specs_parsed[each.key].annotations, {}))
 }
