@@ -60,7 +60,7 @@ variable "organization_nrn" {
   default     = ""
 }
 
-variable "fetch_scope_configuration" {
+variable "create_scope_configuration" {
   type        = bool
   default     = false
   description = "Whether to fetch and apply scope-configuration.json.tpl from the template repo. Set to true only if the file exists for this scope."

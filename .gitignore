@@ -139,3 +139,7 @@ dist
 terraform.tfstate
 terraform.tfstate.backup
 *.tfvars
+
+# Example secrets and lock files
+examples/scope-definition/terraform.tfvars.json
+examples/scope-definition/.terraform.lock.hcl

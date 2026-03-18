@@ -9,7 +9,7 @@ data "http" "service_spec_template" {
 
 # Fetch scope configuration template (optional - may not exist for all scopes)
 data "http" "scope_configuration_template" {
-  count = var.fetch_scope_configuration ? 1 : 0
+  count = var.create_scope_configuration ? 1 : 0
   url   = "${var.github_repo_url}/raw/${var.github_ref}/${var.github_scope_path}/specs/scope-configuration.json.tpl"
 }
 
@@ -68,24 +68,23 @@ locals {
 
 locals {
   # Replace the NRN gomplate placeholder with the organization_nrn variable
-  scope_configuration_rendered = var.fetch_scope_configuration ? replace(
+  scope_configuration_rendered = var.create_scope_configuration ? replace(
     data.http.scope_configuration_template[0].response_body,
     "/\"{{\\s+env.Getenv\\s+\".*\"\\s+}}\"/",
     "\"${var.organization_nrn}\""
   ) : "{}"
-  scope_configuration = var.fetch_scope_configuration ? jsondecode(local.scope_configuration_rendered) : null
+  scope_configuration = var.create_scope_configuration ? jsondecode(local.scope_configuration_rendered) : null
 }
 
 resource "nullplatform_provider_specification" "from_scope_configuration" {
-  count = var.fetch_scope_configuration ? 1 : 0
+  count = var.create_scope_configuration ? 1 : 0
 
-  name = local.scope_configuration.name
-  description = local.scope_configuration.description
-  category = local.scope_configuration.category
+  name             = local.scope_configuration.name
+  description      = local.scope_configuration.description
+  category         = local.scope_configuration.category
   allow_dimensions = local.scope_configuration.allow_dimensions
-  nrn        = var.organization_nrn
-  type       = local.scope_configuration.type
-  spec_schema = jsonencode(local.scope_configuration.schema)
+  visible_to       = [var.organization_nrn]
+  schema      = jsonencode(local.scope_configuration.schema)
 }
 
 ################################################################################
@@ -111,6 +110,7 @@ resource "nullplatform_scope_type" "from_template" {
 # Process action templates - direct JSON parsing (they don't contain template variables)
 # replace is done because some old templates contain gomplate placeholders
 locals {
+  # Only parse templates that returned a 200 — missing files return an HTML 404 page
   action_specs_parsed = {
     for name in var.action_spec_names :
     name => jsondecode(replace(
@@ -118,12 +118,13 @@ locals {
       "/\"{{\\s+env.Getenv\\s+\".*\"\\s+}}\"/",
       "\"\""
     ))
+    if data.http.action_templates[name].status_code == 200
   }
 }
 
 # Create action specifications
 resource "nullplatform_action_specification" "from_templates" {
-  for_each   = toset(var.action_spec_names)
+  for_each   = toset(keys(local.action_specs_parsed))
   depends_on = [nullplatform_service_specification.from_template]
 
   service_specification_id = local.service_specification_id
