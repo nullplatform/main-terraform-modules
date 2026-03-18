@@ -1,16 +1,16 @@
 terraform {
   required_providers {
     nullplatform = {
-      source  = "nullplatform/nullplatform"
+      source = "nullplatform/nullplatform"
     }
     http = {
-      source  = "hashicorp/http"
+      source = "hashicorp/http"
     }
     external = {
-      source  = "hashicorp/external"
+      source = "hashicorp/external"
     }
     null = {
-      source  = "hashicorp/null"
+      source = "hashicorp/null"
     }
   }
 }
